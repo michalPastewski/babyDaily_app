@@ -1,0 +1,9 @@
+html {
+   box-sizing: border-box;
+}
+
+.container {
+   width: 100%;
+   margin: 0 auto;
+   color: #2b2a2a;
+}
