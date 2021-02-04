@@ -1,9 +1,14 @@
 html {
    box-sizing: border-box;
+
+   --pripary-colot: #F5DEB3;
+   --secondary-color:#BCA77E;
+   --focus-color: rgba(255, 238, 202, .2);
+   --font-color: #005B4C;
 }
 
 .container {
    width: 100%;
    margin: 0 auto;
-   color: #2b2a2a;
+   color: var(--font-color);
 }

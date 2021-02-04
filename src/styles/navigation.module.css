@@ -9,7 +9,7 @@
 }
 
 .navigation__logo {
-  color: #2b2a2a;
+  color: var(--font-color);
   text-decoration: none;
   font-style: italic;
 }
@@ -24,7 +24,7 @@
 }
 
 .navigation__logo__h:hover {
-  background: rgba(245, 222, 179, .2);
+  background: var(--focus-color);
 }
 
 .navigation__item {
@@ -70,7 +70,7 @@
 
 .navigation__list__link:hover {
   transform: scale(1.2);
-  background: rgba(245, 222, 179, .2);
+  background: var(--focus-color);
 }
 
 .navigation__list__img {
