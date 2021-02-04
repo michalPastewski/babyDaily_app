@@ -12,3 +12,32 @@ html {
    margin: 0 auto;
    color: var(--font-color);
 }
+
+.page__wrapper {
+   width: 90vw;
+   margin: 0 auto;
+}
+
+.page__title {
+   text-align: center;
+   font-size: 2em;
+   letter-spacing: 3px;
+}
+
+.page__content {
+   display: flex;
+   justify-content: center;
+}
+
+.icon {
+   margin-right: 12px;
+   border: solid 8px #F5DEB3;
+   border-radius: 50%;
+ } 
+
+.icon__img {
+   width: 100px;
+   height: 100px;
+   padding: 12px;
+   transform: rotate(30deg);
+ }

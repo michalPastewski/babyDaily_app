@@ -1,0 +1,68 @@
+.header {
+  margin-bottom: 20px;
+  display: flex;
+}
+.icon {
+  margin-right: 12px;
+  border: solid 8px #F5DEB3;
+  border-radius: 50%;
+}
+
+.icon__img {
+  width: 100px;
+  height: 100px;
+  padding: 12px;
+  transform: rotate(30deg);
+}
+
+.checkbox__menu {
+  flex: 2;
+  font-size: 1.7em;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: space-around;
+}
+
+.checkbox__menu__section {
+  width: 45%;
+  height: 68px;
+  padding-left: 10px;
+
+  display: flex;
+  align-items: center;
+
+  background-color: var(--pripary-colot);
+  border-radius: 10px;
+}
+
+.input__num {
+  width: 80px;
+  margin-left: 10px;
+  font-size: .8em;
+  text-align: end;
+  outline: none;
+}
+
+.lable {
+  width: 100%;
+  padding: 15px;
+}
+
+.add__button {
+  width: 80px;
+  height: 80px;
+  margin-top: 20px;
+  font-size: 1.2em;
+  color: var(--font-color);
+
+  outline: none;
+  background-color: transparent;
+  border: solid 3px #F5DEB3;
+  border-radius: 50%;
+}
+
+.add__button:active {
+  transform: scale(.9);
+}
