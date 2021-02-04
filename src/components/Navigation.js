@@ -15,6 +15,7 @@ const Navigation = () => {
             <NavLink to="/" className={styles.navigation__logo}>
                <h1 className={styles.navigation__logo__h}>babyDaily</h1>
             </NavLink>
+            <div className={styles.navigation__item}><img src={baby} className={styles.navigation__item__img} /><span>Wojtek</span></div>
          </div>
 
          <div className={styles.navigation__list}>
@@ -28,8 +29,7 @@ const Navigation = () => {
                <img src={moon} className={styles.navigation__list__img} />
             </NavLink>
          </div>
-
-         <div className={styles.navigation__item}><img src={baby} className={styles.navigation__item__img} /><span>Wojtek</span></div>
+         <div className={styles.navigation__item}><span>raport</span></div>
       </nav>
    )
 }
