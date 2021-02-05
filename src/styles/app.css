@@ -1,5 +1,4 @@
 html {
-   box-sizing: border-box;
 
    --pripary-colot: #F5DEB3;
    --secondary-color:#BCA77E;
@@ -19,14 +18,11 @@ html {
 }
 
 .page__title {
+   display: block;
+   width: 100vw;
    text-align: center;
    font-size: 2em;
    letter-spacing: 3px;
-}
-
-.page__content {
-   display: flex;
-   justify-content: center;
 }
 
 .icon {
@@ -40,4 +36,31 @@ html {
    height: 100px;
    padding: 12px;
    transform: rotate(30deg);
+ }
+
+ .button {
+   width: 80px;
+   height: 80px;
+   margin-top: 20px;
+   font-size: 1.2em;
+   color: var(--font-color);
+ 
+   outline: none;
+   background-color: transparent;
+   border: solid 3px #F5DEB3;
+   border-radius: 50%;
+ }
+ 
+ .button:active {
+   transform: scale(.9);
+ }
+
+ .stopper {
+   width: 235px;
+   margin: 25px 40px 0;
+   font-size: 3.5em;
+   letter-spacing: 4px;
+
+   display: flex;
+   justify-content: space-between;
  }
