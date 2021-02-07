@@ -48,3 +48,9 @@
   justify-content: center;
   align-items: center;
 }
+
+.timer {
+  margin: 25px 40px 0;
+  font-size: 8vw;
+  letter-spacing: 4px;
+}

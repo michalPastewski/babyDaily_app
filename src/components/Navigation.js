@@ -1,5 +1,6 @@
-import react from 'react';
+import React from 'react';
 import { NavLink } from "react-router-dom";
+import className from 'classnames';
 import styles from'../styles/navigation.module.css';
 
 import bottleImg from '../assets/icons/feeding-bottle.svg';
@@ -29,7 +30,15 @@ const Navigation = () => {
                <img src={moon} className={styles.navigation__list__img} />
             </NavLink>
          </div>
-         <div className={styles.navigation__item}><span>raport</span></div>
+         <button className={className({
+            [styles.navigation__item]: true,
+            [styles.navigation__button]: false,
+            [styles.navigation__button__disabled]: true,})
+         }
+            disabled={true}
+         >
+            raport
+         </button>
       </nav>
    )
 }

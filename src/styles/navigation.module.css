@@ -39,6 +39,26 @@
   align-items:  center;
 }
 
+.navigation__button {
+  color: var(--font-color);
+  background-color: transparent;
+  outline: none;
+}
+
+.navigation__button:hover {
+  background-color: var(--focus-color);
+}
+
+.navigation__button:active {
+  background-color: var(--secondary-color);
+}
+
+.navigation__button__disabled {
+  border-color: rgba(192, 192, 192, 0.3);
+  color: rgba(126, 126, 126, .3);
+  background-color: rgba(192, 192, 192, 0.3);
+}
+
 .navigation__item__img {
   width: 25px;
   height: 25px;

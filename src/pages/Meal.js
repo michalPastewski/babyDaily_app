@@ -6,7 +6,7 @@ import PageWrapper from "../components/PageWrapper";
 import PageIcon from "../components/PageIcon";
 import MealCheckbox from '../components/MealCheckbox';
 import Button from '../components/Button';
-import Stopper from '../components/Stopper';
+import Stopwatch from '../components/Stopwatch';
 
 const Meal = () => {
    return (
@@ -16,11 +16,9 @@ const Meal = () => {
             <MealCheckbox />
             <Button title="add" onClick={() => console.log("click")}/>
          </section>
-         
+
          <section className={styles.active__section}>
-            <Button title="start" />
-            <Stopper />
-            <Button title="stop" />
+            <Stopwatch />
          </section>
       </PageWrapper>
    );
