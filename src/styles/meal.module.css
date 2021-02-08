@@ -38,7 +38,7 @@
   padding: 15px;
 }
 
-.active__section {
+.stopwatch__section {
   width: 100%;
   min-height: 100px;
   padding:0 0 20px 8%;
@@ -53,4 +53,38 @@
   margin: 25px 40px 0;
   font-size: 8vw;
   letter-spacing: 4px;
+}
+
+.list__section {
+  margin-top: 20px;
+  border: solid 2px var(--secondary-color);
+  border-radius: 5px;
+}
+
+.table {
+  border-collapse: collapse;
+  font-size: 1.2em;
+}
+
+.table__row {
+ border-bottom: solid 1px var(--pripary-colot);
+}
+
+.table__row td:first-child {
+  border-left: none;
+}
+
+.body__row {
+  display: flex;
+}
+
+.body__row:last-child {
+  border-bottom: none;
+}
+
+.table__item {
+  width: 167.5px;
+  padding: 3px;
+  border-left: solid 1px var(--pripary-colot);
+  text-align: center;
 }

@@ -7,6 +7,7 @@ import PageIcon from "../components/PageIcon";
 import MealCheckbox from '../components/MealCheckbox';
 import Button from '../components/Button';
 import Stopwatch from '../components/Stopwatch';
+import MealTable from '../components/MealTable';
 
 const Meal = () => {
    return (
@@ -16,9 +17,11 @@ const Meal = () => {
             <MealCheckbox />
             <Button title="add" onClick={() => console.log("click")}/>
          </section>
-
-         <section className={styles.active__section}>
+         <section className={styles.stopwatch__section}>
             <Stopwatch />
+         </section>
+         <section className={styles.list__section}>
+            <MealTable />
          </section>
       </PageWrapper>
    );
