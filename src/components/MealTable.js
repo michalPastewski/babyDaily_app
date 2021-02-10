@@ -10,30 +10,6 @@ const practiseDatas = [
 
 const MealTable = () => {
   return (
-    // <table className={styles.table}>
-    //   <thead >
-    //     <th className={styles.table__row}>
-    //       <td className={styles.table__item}>DATA</td>
-    //       <td className={styles.table__item}>START</td>
-    //       <td className={styles.table__item}>STOP</td>
-    //       <td className={styles.table__item}>CZAS</td>
-    //       <td className={styles.table__item}>RODZAJ</td>
-    //     </th>
-    //   </thead>
-    //   <tbody>
-    //     {
-    //       practiseDatas.map((data) => (
-    //             <th className={styles.table__row}>
-    //               <td className={styles.table__item}>{data.date}</td>
-    //               <td className={styles.table__item}>{data.start}</td>
-    //               <td className={styles.table__item}>{data.stop}</td>
-    //               <td className={styles.table__item}>{data.time}</td>
-    //               <td className={styles.table__item}>{data.type}</td>
-    //             </th>))
-    //     }
-    //   </tbody>
-    // </table>
-
     <section className={styles.table}>
         <header className={styles.table__row}>
           <div className={styles.table__item}>DATA</div>
@@ -43,8 +19,8 @@ const MealTable = () => {
           <div className={styles.table__item}>RODZAJ</div>
         </header>
         {
-          practiseDatas.map((data) => (
-                <div className={styles.table__row}>
+          practiseDatas.map((data, i) => (
+                <div className={styles.table__row} key={i}>
                   <div className={styles.table__item}>{data.date}</div>
                   <div className={styles.table__item}>{data.start}</div>
                   <div className={styles.table__item}>{data.stop}</div>

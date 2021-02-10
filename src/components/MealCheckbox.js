@@ -12,19 +12,19 @@ const MealCheckbox = () => {
     <div className={styles.checkbox__menu}>
       <div className={styles.checkbox__menu__section}>
         <input type="checkbox" id="one" name="one" className={styles.input} />
-        <label for="one" className={styles.lable}>pierś</label>
+        <label htmlFor="one" className={styles.lable}>pierś</label>
       </div>
       <div className={styles.checkbox__menu__section}>
         <input type="checkbox" id="two" name="two" className={styles.input} />
-        <label for="two" className={styles.lable}>butelka</label>
+        <label htmlFor="two" className={styles.lable}>butelka</label>
       </div>
       <div className={styles.checkbox__menu__section}>
         <input type="checkbox" id="three" name="three"  className={styles.input} />
-        <label for="three" className={styles.lable}>mleko modyfikowane</label>
+        <label htmlFor="three" className={styles.lable}>mleko modyfikowane</label>
       </div>
       <div className={styles.checkbox__menu__section}>
         <input type="number" id="num"  name="num" className={styles.input__num} value={value} onChange={handleChangeValue}/>
-        <label for="num" className={styles.lable}>ml</label>
+        <label htmlFor="num" className={styles.lable}>ml</label>
       </div>
     </div>
   )
