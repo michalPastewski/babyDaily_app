@@ -1,7 +1,7 @@
 import {React, useState, useRef } from 'react';
 
 import Button from '../components/Button';
-import Timer from './Timer';
+import Stoper from './Stoper';
 
 const Stopwatch = () => {
   const [timer, setTimer] = useState(0);
@@ -35,7 +35,7 @@ const Stopwatch = () => {
       ? <Button title="pause" onClick={handlePause} />
       : <Button title="start" onClick={startTimer} />
     }
-      <Timer time={timer}/>
+      <Stoper time={timer}/>
       <Button title="stop" onClick={stopTimer} />
     </>
   );

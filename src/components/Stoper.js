@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../styles/meal.module.css';
 
-const Timer = ({time}) => {
+const Stoper = ({time}) => {
   const timeSetting = (elm) => (elm >= 10) ? elm : `0${elm}`;
 
   const seconds = timeSetting(Math.floor(time % 60));
@@ -15,4 +15,4 @@ return (
 );
 }
 
-export default Timer;
+export default Stoper;

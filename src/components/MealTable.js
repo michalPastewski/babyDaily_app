@@ -1,5 +1,4 @@
 import React from 'react';
-import className from 'classnames';
 import styles from '../styles/meal.module.css';
 
 const practiseDatas = [
@@ -11,29 +10,49 @@ const practiseDatas = [
 
 const MealTable = () => {
   return (
-    <table className={styles.table}>
-      <thead>
-        <th className={styles.table__row}>
-          <td className={styles.table__item}>DATA</td>
-          <td className={styles.table__item}>START</td>
-          <td className={styles.table__item}>STOP</td>
-          <td className={styles.table__item}>CZAS</td>
-          <td className={styles.table__item}>RODZAJ</td>
-        </th>
-      </thead>
-      <tbody>
+    // <table className={styles.table}>
+    //   <thead >
+    //     <th className={styles.table__row}>
+    //       <td className={styles.table__item}>DATA</td>
+    //       <td className={styles.table__item}>START</td>
+    //       <td className={styles.table__item}>STOP</td>
+    //       <td className={styles.table__item}>CZAS</td>
+    //       <td className={styles.table__item}>RODZAJ</td>
+    //     </th>
+    //   </thead>
+    //   <tbody>
+    //     {
+    //       practiseDatas.map((data) => (
+    //             <th className={styles.table__row}>
+    //               <td className={styles.table__item}>{data.date}</td>
+    //               <td className={styles.table__item}>{data.start}</td>
+    //               <td className={styles.table__item}>{data.stop}</td>
+    //               <td className={styles.table__item}>{data.time}</td>
+    //               <td className={styles.table__item}>{data.type}</td>
+    //             </th>))
+    //     }
+    //   </tbody>
+    // </table>
+
+    <section className={styles.table}>
+        <header className={styles.table__row}>
+          <div className={styles.table__item}>DATA</div>
+          <div className={styles.table__item}>START</div>
+          <div className={styles.table__item}>STOP</div>
+          <div className={styles.table__item}>CZAS</div>
+          <div className={styles.table__item}>RODZAJ</div>
+        </header>
         {
           practiseDatas.map((data) => (
-                <th className={className({[styles.table__row]: true, [styles.body__row]: true,})}>
-                  <td className={styles.table__item}>{data.date}</td>
-                  <td className={styles.table__item}>{data.start}</td>
-                  <td className={styles.table__item}>{data.stop}</td>
-                  <td className={styles.table__item}>{data.time}</td>
-                  <td className={styles.table__item}>{data.type}</td>
-                </th>))
+                <div className={styles.table__row}>
+                  <div className={styles.table__item}>{data.date}</div>
+                  <div className={styles.table__item}>{data.start}</div>
+                  <div className={styles.table__item}>{data.stop}</div>
+                  <div className={styles.table__item}>{data.time}</div>
+                  <div className={styles.table__item}>{data.type}</div>
+                </div>))
         }
-      </tbody>
-    </table>
+    </section>
   )
 }
 
