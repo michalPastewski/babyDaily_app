@@ -9,6 +9,13 @@ const Stopwatch = () => {
   const [isPause, setIsPause] = useState(false);
   const countRef = useRef(null);
 
+  const [state, setState] = useState({
+    start: '',
+    end: '',
+    time: '',
+    type: []
+  })
+
   const startTimer = () => {
     setIsActive(true);
     setIsPause(false);
