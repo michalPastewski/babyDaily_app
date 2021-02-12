@@ -4,7 +4,7 @@ import styles from '../styles/meal.module.css';
 
 import PageWrapper from "../components/PageWrapper";
 import PageIcon from "../components/PageIcon";
-import MealCheckbox from '../components/MealCheckbox';
+import MealCheckboxes from '../components/MealCheckboxes';
 import Button from '../components/Button';
 import Stopwatch from '../components/Stopwatch';
 import MealTable from '../components/MealTable';
@@ -14,7 +14,7 @@ const Meal = () => {
       <PageWrapper title="POSIŁKI">
          <section className={styles.header}>
             <PageIcon image={mealImg} alt="bottle-icon"/>
-            <MealCheckbox />
+            <MealCheckboxes />
             <Button title="add" onClick={() => console.log("click")}/>
          </section>
          <section className={styles.stopwatch__section}>

@@ -1,48 +1,71 @@
-import {React, useState, useRef } from 'react';
+import {React, useState, useRef, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Button from '../components/Button';
 import Stoper from './Stoper';
+import { add, resetCheckbox } from '../state/meal';
 
 const Stopwatch = () => {
-  const [timer, setTimer] = useState(0);
-  const [isActive, setIsActive] = useState(false);
-  const [isPause, setIsPause] = useState(false);
-  const countRef = useRef(null);
+  const label = useSelector(state => state.meal.label);
+  const dispatch = useDispatch();
 
-  const [state, setState] = useState({
+  const dataToFill = {
     start: '',
     end: '',
     time: '',
-    type: []
-  })
+    type: null
+  }
+  const [state, setState] = useState(dataToFill);
+  const [timer, setTimer] = useState(0);
+  const [isActive, setIsActive] = useState(false);
+  const [isSended, setIsSended] = useState(false);
+  const countRef = useRef(null);
 
   const startTimer = () => {
-    setIsActive(true);
-    setIsPause(false);
-    countRef.current = setInterval(() => {
-      setTimer((timer) => timer + 1);
-    }, 1000);
+    if(!isActive){
+      const startTime = new Date();
+      setState({...state, start: localeTimeFormat(startTime)});
+      setIsActive(true);
+      countRef.current = setInterval(() => {
+        setTimer((timer) => timer + 1);
+      }, 1000);
+    };
   }
 
   const stopTimer = () => {
-    setIsActive(false);
-    setIsPause(false);
-    clearInterval(countRef.current);
-    setTimer(0);
-  }
+    const endTime = new Date();
+    if(timer > 59){
+      setIsSended(true);
+      setState({...state,
+          date: new Date(),
+          end: localeTimeFormat(endTime),
+          time: `${timeHours}:${timeMinutes} h`,
+          type: label
+        });
+    } else {
+      setState(dataToFill);
+    }
+      setIsActive(false);
+      dispatch(resetCheckbox());
+      setTimer(0);
+    }
 
-  const handlePause = () => {
-    setIsPause(true);
-    clearInterval(countRef.current);
-  }
+  useEffect(() => {
+    isSended ? dispatch(add(state)) : setIsSended(false);
+    !isActive && clearInterval(countRef.current);
+  },[isSended, isActive])
+
+  const localeTimeFormat = (time) => time.toLocaleTimeString().slice(0,-3);
+  const timeSetting = (elm) => (elm >= 10) ? elm : `0${elm}`;
+
+  const timeSeconds = timeSetting(Math.floor(timer % 60));
+  const timeMinutes = timeSetting(Math.floor((timer / 60) % 60));
+  const timeHours = timeSetting(Math.floor(timer / 3600));
 
   return (
     <>
-    {isActive && !isPause 
-      ? <Button title="pause" onClick={handlePause} />
-      : <Button title="start" onClick={startTimer} />
-    }
-      <Stoper time={timer}/>
+      <Button title="start" onClick={startTimer} />
+      <Stoper hours={timeHours} minutes={timeMinutes} seconds={timeSeconds}/>
       <Button title="stop" onClick={stopTimer} />
     </>
   );
