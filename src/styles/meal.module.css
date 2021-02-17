@@ -16,6 +16,7 @@
 .checkbox__menu__section {
   width: 40%;
   height: 50px;
+  margin: 10px;
   padding-left: 10px;
   background-color: var(--pripary-colot);
   border-radius: 10px;
@@ -109,4 +110,53 @@
   border-left: solid 1px var(--pripary-colot);
   text-align: center;
   align-self: center;
+}
+
+.form {
+  width: 80vw;
+  min-height: 50vh;
+  padding: 20px;
+  position: absolute;
+  top: 20vh;
+  left: calc(50vw - (40vw + 24px));
+  z-index: 5;
+
+  background-color: #fff;
+  border: solid 8px var(--secondary-color);
+  border-radius: 20px;
+  box-shadow: 0px 0px 80px 25px rgba(0, 91, 76, .4);
+
+  grid-template-columns: 2vw 1fr 1fr 1fr 2vw;
+  grid-template-rows: repeat(3, auto);
+  column-gap: 2.5vw;
+}
+
+.input__date {
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+
+.input__start {
+  grid-column: 3/4;
+  grid-row: 1/2;
+}
+
+.input__end {
+  grid-column: 4/5;
+  grid-row: 1/2;
+}
+
+.form__checkboxes {
+  margin-top: 20px;
+  grid-column: 2 /span 3;
+  grid-row: 2/2;
+  align-self: center;
+}
+
+.form__button {
+  grid-column: 2/span 3;
+  grid-row: 3/3;
+
+  display: flex;
+  justify-content: space-around;
 }

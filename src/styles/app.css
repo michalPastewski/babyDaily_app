@@ -13,7 +13,7 @@ html {
 }
 
 .page__wrapper {
-   width: 90vw;
+   width: 100%;
    margin: 0 auto;
 }
 
@@ -55,3 +55,18 @@ html {
    transform: scale(.9);
  }
 
+.form__item__label {
+   font-size: 1.5em;
+}
+
+.form__item__input {
+   width: 100%;
+   height: 40px;
+   margin-top: 5px;
+
+   border: solid 2px var(--secondary-color);
+   border-radius: 5px;
+   color: var(--font-color);
+   font-size: 1.5em;
+   text-align: center;
+}

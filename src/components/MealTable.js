@@ -15,7 +15,7 @@ const MealTable = () => {
           <div className={styles.table__item}>RODZAJ</div>
         </header>
         {
-          dataList.map((data) => (
+          dataList.reverse().map((data) => (
                 <div className={styles.table__row} key={data.id}>
                   <div className={styles.table__item}>{data.date}</div>
                   <div className={styles.table__item}>{data.start}</div>

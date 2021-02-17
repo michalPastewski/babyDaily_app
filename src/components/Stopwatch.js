@@ -34,15 +34,15 @@ const Stopwatch = () => {
 
   const stopTimer = () => {
     const endTime = new Date();
-    if(timer > 59){
-      setIsSended(true);
+    if(timer > 2) {  //in finall version 59
       setState({...state,
-          date: new Date(),
-          end: localeTimeFormat(endTime),
-          time: `${timeHours}:${timeMinutes} h`,
+        date: new Date(),
+        end: localeTimeFormat(endTime),
+        time: `${timeHours}:${timeMinutes} h`,
           type: label
         });
-    } else {
+        setIsSended(true);
+      } else {
       setState(dataToFill);
     }
       setIsActive(false);
@@ -51,7 +51,10 @@ const Stopwatch = () => {
     }
 
   useEffect(() => {
-    isSended ? dispatch(add(state)) : setIsSended(false);
+    if(isSended) {
+      dispatch(add(state));
+      setIsSended(false);
+    }
     !isActive && clearInterval(countRef.current);
   },[isSended, isActive])
 
