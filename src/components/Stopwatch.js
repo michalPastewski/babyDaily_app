@@ -1,8 +1,8 @@
 import {React, useState, useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
+import styles from '../styles/meal.module.css';
 import Button from '../components/Button';
-import Stoper from './Stoper';
 import { add, resetCheckbox } from '../state/meal';
 
 const Stopwatch = () => {
@@ -10,6 +10,7 @@ const Stopwatch = () => {
   const dispatch = useDispatch();
 
   const dataToFill = {
+    date: '',
     start: '',
     end: '',
     time: '',
@@ -36,9 +37,9 @@ const Stopwatch = () => {
     const endTime = new Date();
     if(timer > 2) {  //in finall version 59
       setState({...state,
-        date: new Date(),
+        date: endTime.toLocaleDateString(),
         end: localeTimeFormat(endTime),
-        time: `${timeHours}:${timeMinutes} h`,
+        time: `${hours}:${minutes} h`,
           type: label
         });
         setIsSended(true);
@@ -56,19 +57,21 @@ const Stopwatch = () => {
       setIsSended(false);
     }
     !isActive && clearInterval(countRef.current);
-  },[isSended, isActive])
+  },[isSended, isActive]);
 
   const localeTimeFormat = (time) => time.toLocaleTimeString().slice(0,-3);
   const timeSetting = (elm) => (elm >= 10) ? elm : `0${elm}`;
 
-  const timeSeconds = timeSetting(Math.floor(timer % 60));
-  const timeMinutes = timeSetting(Math.floor((timer / 60) % 60));
-  const timeHours = timeSetting(Math.floor(timer / 3600));
+  const seconds = timeSetting(Math.floor(timer % 60));
+  const minutes = timeSetting(Math.floor((timer / 60) % 60));
+  const hours = timeSetting(Math.floor(timer / 3600));
 
   return (
     <>
       <Button title="start" onClick={startTimer} />
-      <Stoper hours={timeHours} minutes={timeMinutes} seconds={timeSeconds}/>
+      <div className={styles.timer}>
+        <div>{`${hours}:${minutes}:${seconds}`}</div>
+      </div>
       <Button title="stop" onClick={stopTimer} />
     </>
   );

@@ -13,13 +13,12 @@ html {
 }
 
 .page__wrapper {
-   width: 100%;
+   width: 90%;
    margin: 0 auto;
 }
 
 .page__title {
    display: block;
-   width: 100vw;
    text-align: center;
    font-size: 2em;
    letter-spacing: 3px;

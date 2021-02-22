@@ -5,21 +5,18 @@ import styles from '../styles/meal.module.css';
 import { addLabel, removeLabel } from '../state/meal';
 
 const Checkbox = ({label}) => {
-  const isChecked = useSelector(state => state.meal.isChecked)
+  const isChecked = useSelector(state => state.meal.isChecked);
   const dispatch = useDispatch();
 
   const [checked, setChecked] = useState(false);
 
   const handleOnCheck = () => {
+    !checked ? dispatch(addLabel(label)) : dispatch(removeLabel(label));
     setChecked(!checked);
   };
 
   useEffect(() => {
-    checked ? dispatch(addLabel(label)) : dispatch(removeLabel(label));
-  });
-
-  useEffect(() => {
-    if(isChecked === false) setChecked(isChecked);
+    if(isChecked === null && checked) setChecked(false);
   }, [isChecked])
 
   return (

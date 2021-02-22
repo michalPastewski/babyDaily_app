@@ -34,22 +34,24 @@ export default function(state = initialState, action) {
     case ADD_LABEL:
       return {...state,
         label: [...state.label, action.payload],
-        isChecked: null,
+        isChecked: false,
       };
     case REMOVE_LABEL:
       return {...state,
         label: state.label.filter((label) => !label.includes(action.payload))
       };
     case RESET_CHECKBOX:
+      removeLabel();
       return {...state,
-        isChecked: false
+        label: [],
+        isChecked: null,
       }
     case ADD:
       return {...state,
         data: [...state.data,
           {
             id: Math.floor(Date.now()/(Math.random()*2020)),
-            date: action.payload.date.toLocaleDateString(),
+            date: action.payload.date,
             start: action.payload.start,
             end: action.payload.end,
             time: action.payload.time,

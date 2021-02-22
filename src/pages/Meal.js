@@ -23,7 +23,7 @@ const Meal = () => {
          <section className={styles.header}>
             <PageIcon image={mealImg} alt="bottle-icon"/>
             <MealCheckboxes />
-            <Button title="add" onClick={handleOnClick}/>
+            <Button title="dodaj" onClick={handleOnClick}/>
          </section>
          <section className={styles.stopwatch__section}>
             <Stopwatch />
