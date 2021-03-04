@@ -4,7 +4,7 @@ import './styles/app.css';
 
 import Navigation from './components/Navigation';
 import Home from './pages/Home';
-import Meal from './pages/Meal';
+import Meal from './pages/meal/Meal';
 import Diaper from './pages/Diaper';
 import Sleep from './pages/Sleep';
 

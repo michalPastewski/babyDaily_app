@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import styles from '../styles/meal.module.css';
+import styles from '../../styles/meal.module.css';
 
 import MealCheckboxes from './MealCheckboxes';
-import Button from './Button';
-import FormItem from './FormItem';
-import { resetCheckbox, add } from '../state/meal';
+import Button from '../../components/Button';
+import FormItem from '../../components/FormItem';
+import { resetCheckbox, add } from '../../state/meal';
 
 const MealForm = ({ show, isClicked }) => {
   const label = useSelector(state => state.meal.label);

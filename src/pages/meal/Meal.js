@@ -1,14 +1,14 @@
 import React,  { useState }from 'react';
-import mealImg from '../assets/icons/feeding-bottle.svg';
-import styles from '../styles/meal.module.css';
+import mealImg from '../../assets/icons/feeding-bottle.svg';
+import styles from '../../styles/meal.module.css';
 
-import PageWrapper from "../components/PageWrapper";
-import PageIcon from "../components/PageIcon";
-import MealCheckboxes from '../components/MealCheckboxes';
-import Button from '../components/Button';
-import MealForm from '../components/MealForm';
-import Stopwatch from '../components/Stopwatch';
-import MealTable from '../components/MealTable';
+import PageWrapper from "../../components/PageWrapper";
+import PageIcon from "../../components/PageIcon";
+import MealCheckboxes from './MealCheckboxes';
+import Button from '../../components/Button';
+import MealForm from './MealForm';
+import Stopwatch from '../../components/Stopwatch';
+import MealTable from './MealTable';
 
 const Meal = () => {
    const [show, setShow] = useState(false);

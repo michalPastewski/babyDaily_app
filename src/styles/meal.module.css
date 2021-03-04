@@ -1,27 +1,31 @@
 .header {
   margin-bottom: 20px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  grid-template-rows: auto;
+  grid-template-areas: "icon checkboxes button";
 }
 
 .checkbox__menu {
-  flex: 2;
+  grid-area: checkboxes;
   font-size: 1.4em;
 
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  align-content: space-around;
 }
 
 .checkbox__menu__section {
-  width: 40%;
+  width: min(255px, 40%);
   height: 50px;
   margin: 10px;
   padding-left: 10px;
-  background-color: var(--pripary-colot);
+  font-size: clamp(18px, 1.9vw, 1em);
+  background-color: var(--primary-color);
   border-radius: 10px;
 
   display: flex;
+  justify-content: center;
   align-items: center;
 }
 
@@ -62,9 +66,6 @@
 }
 
 .stopwatch__section {
-  width: 100%;
-  min-height: 100px;
-  padding:0 0 20px 8%;
   box-sizing: border-box;
 
   display: flex;
@@ -74,7 +75,7 @@
 
 .timer {
   margin: 25px 40px 0;
-  font-size: 8vw;
+  font-size: clamp(2em, 8vw, 6em);
   letter-spacing: 4px;
 }
 
@@ -85,14 +86,19 @@
   border-radius: 5px;
 }
 
+.table__section {
+  width: 100%;
+  border-top: 1px solid #ccc;
+}
+
 .table {
-  font-size: 1.2em;
+  font-size: clamp(.5em, 2vw, 1.2em);
   display: flex;
   flex-direction: column;
 }
 
 .table__row {
-  border-bottom: solid 1px var(--pripary-colot);
+  border-bottom: solid 1px var(--primary-color);
   display: flex;
 }
 
@@ -107,7 +113,7 @@
 .table__item {
   width: 20%;
   padding: 3px;
-  border-left: solid 1px var(--pripary-colot);
+  border-left: solid 1px var(--primary-color);
   text-align: center;
   align-self: center;
 }
@@ -159,4 +165,21 @@
 
   display: flex;
   justify-content: space-around;
+}
+
+
+@media (max-width: 760px) {
+  .header {
+    grid-template-columns: 70% 30%;
+    grid-template-areas: "checkboxes button";
+  }
+  .checkbox__menu {
+    flex-direction: column;
+  }
+  .checkbox__menu__section {
+    width: min(255px, 100%)
+  }
+  .timer {
+    margin: 25px 10px 0;
+  }
 }

@@ -1,12 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import styles from '../styles/meal.module.css';
+import styles from '../../styles/meal.module.css';
 
 const MealTable = () => {
   const dataList = useSelector(state => state.meal.data);
   return (
-    <section className={styles.table}>
+    <section className={styles.table__section}>
+      <div className={styles.table}>
         <header className={styles.table__row}>
           <div className={styles.table__item}>DATA</div>
           <div className={styles.table__item}>START</div>
@@ -24,6 +25,7 @@ const MealTable = () => {
                   <div className={styles.table__item}>{data.type.join(', ')}</div>
                 </div>))
         }
+      </div>
     </section>
   )
 }

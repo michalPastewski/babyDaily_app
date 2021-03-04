@@ -1,6 +1,6 @@
 import { React, useState } from 'react';
-import styles from '../styles/meal.module.css';
-import Checkbox from './Checkbox';
+import styles from '../../styles/meal.module.css';
+import Checkbox from '../../components/Checkbox';
 
 const MealCheckboxes = () => {
   // const [value, setNewValue] = useState(100);

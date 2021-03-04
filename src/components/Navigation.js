@@ -12,11 +12,13 @@ import baby from '../assets/icons/smiling-baby.svg';
 const Navigation = () => {
    return (
       <nav className={styles.navigation}>
-         <div>
+         <div className={styles.logo__section}>
             <NavLink to="/" className={styles.navigation__logo}>
                <h1 className={styles.navigation__logo__h}>babyDaily</h1>
             </NavLink>
-            <div className={styles.navigation__item}><img src={baby} className={styles.navigation__item__img} /><span>Wojtek</span></div>
+            <div className={styles.navigation__item}><img src={baby} className={styles.navigation__item__img} />
+               <span>Wojtek</span>
+            </div>
          </div>
 
          <div className={styles.navigation__list}>
@@ -30,15 +32,17 @@ const Navigation = () => {
                <img src={moon} className={styles.navigation__list__img} />
             </NavLink>
          </div>
-         <button className={className({
-            [styles.navigation__item]: true,
-            [styles.navigation__button]: false,
-            [styles.navigation__button__disabled]: true,})
-         }
-            disabled={true}
-         >
-            raport
-         </button>
+         <div className={styles.button__section} >
+            <button className={className({
+               [styles.navigation__item]: true,
+               [styles.navigation__button]: false,
+               [styles.navigation__button__disabled]: true,})
+            }
+               disabled={true}
+            >
+               raport
+            </button>
+         </div>
       </nav>
    )
 }
