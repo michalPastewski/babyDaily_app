@@ -9,5 +9,4 @@ Jest to aplikacja web'owa stworzona z wykorzystaniem `"create-react-app"`.
 Dla treningu podczas tworzenia aplikacji maksymalnie duża ilość komponentów tworzona jest bez wykorzystania bibliotek zewnętrznych. Stylizacja tworzona zgodnie z css.module.
 ____
 Branches:
-* master -> develope
 * main -> production
