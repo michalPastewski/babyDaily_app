@@ -1,7 +1,8 @@
 import React from 'react';
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import className from 'classnames';
 import styles from'../styles/navigation.module.css';
+import { useAuth } from "../context/AuthContext";
 
 import bottleImg from '../assets/icons/feeding-bottle.svg';
 import diapre from '../assets/icons/diaper.svg';
@@ -10,6 +11,12 @@ import baby from '../assets/icons/smiling-baby.svg';
 
 
 const Navigation = () => {
+   const { signOut, currentUser } = useAuth();
+
+   const handleLogOut = () => {
+      signOut();
+   }
+
    return (
       <nav className={styles.navigation}>
          <div className={styles.logo__section}>
@@ -42,6 +49,11 @@ const Navigation = () => {
             >
                raport
             </button>
+            {
+               currentUser
+               ? <button onClick={handleLogOut}>Wyloguj</button>
+               : <button><Link to='/'>Zaloguj</Link></button>
+            }
          </div>
       </nav>
    )

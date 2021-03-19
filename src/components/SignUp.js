@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 const SignUp = () => {
@@ -6,45 +7,24 @@ const SignUp = () => {
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
   const { signUp } = useAuth();
-
+  const history =  useHistory();
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
 
-  // async function handleSubmit(e) {
-  //   e.preventDefault();
-
-  //   if(passwordRef.current.value !== passwordConfirmRef.current.value) {
-  //     return setError('Password do not match');
-  //   }
-
-  //   try {
-  //     setError('')
-  //     setLoading(true)
-  //     await signUp(emailRef.current.value, passwordRef.current.value)
-  //   } catch {
-  //     setError('Faild to create an accoound')
-  //   }
-
-  //   setLoading(false);
-  // }
-
-  const handleSubmit = (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
 
     if(passwordRef.current.value !== passwordConfirmRef.current.value) {
       return setError('Password do not match');
     }
 
-    signUp(emailRef.current.value, passwordRef.current.value)
-      .then(() => setError(''))
-      .then(() => {
-        emailRef.current.value = '';
-        passwordConfirmRef.current.value = '';
-        passwordRef.current.value = '';
-      })
-      .catch(() => setError('Failed to create an accoount'));
+    try {
+      setError('');
+      await signUp(emailRef.current.value, passwordRef.current.value);
+      history.push('/');
+    } catch {
+      setError('Rejestracja się nie powiodła');
+    }
 
-    setLoading(false);
   }
 
   return (
@@ -52,7 +32,6 @@ const SignUp = () => {
       <fieldset>
         <legend>Rejestracja</legend>
         { error && <div>{error}</div> }
-  
         <label htmlFor='login'>Login:</label>
         <input type='email' id='email' name='email' ref={emailRef} required />
   
@@ -62,7 +41,7 @@ const SignUp = () => {
         <label htmlFor='confirm'>Potwierdź hasło:</label>
         <input type='password' id='confirm' name='confirm' minLength='6' ref={passwordConfirmRef}  required />
   
-        <button disabled={loading} >rejestruj</button>
+        <button>rejestruj</button>
       </fieldset>
     </form>
   );
