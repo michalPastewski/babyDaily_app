@@ -9,8 +9,8 @@ import Home from './pages/home/Home';
 import Meal from './pages/meal/Meal';
 import Diaper from './pages/Diaper';
 import Sleep from './pages/Sleep';
-import SignUp from "./components/SignUp";
-import ForgotPassword from './components/ForgotPassword';
+import SignUp from "./components/Logging/SignUp";
+import ForgotPassword from './components/Logging/ForgotPassword';
 
 function App() {
   return (

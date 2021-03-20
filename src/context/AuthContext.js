@@ -23,6 +23,10 @@ export const AuthProvider = ({ children }) => {
 
   const signOut = () => auth.signOut();
 
+  const updateProfile = (name) => {
+    return  auth.currentUser.updateProfile({displayName: name});
+  }
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       setCurrentUser(user);
@@ -40,7 +44,8 @@ export const AuthProvider = ({ children }) => {
     signUp,
     signIn,
     signOut,
-    resetPassword
+    resetPassword,
+    updateProfile
   }
 
   return (

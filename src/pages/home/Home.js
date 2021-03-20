@@ -3,15 +3,15 @@ import React from 'react';
 import { useAuth } from '../../context/AuthContext';
 import PageWrapper from '../../components/PageWrapper';
 import MainHome from './MainHome';
-import SignIn from '../../components/SignIn';
+import SignIn from '../../components/Logging/SignIn';
 
 const Home = () => {
    const { currentUser } = useAuth();
 
    return (
    <PageWrapper title='babyDaily'>
-      <MainHome />
-      { !currentUser && <SignIn/>}
+     
+      { !currentUser ? <SignIn/> :  <MainHome /> }
    </PageWrapper>
 )}
 

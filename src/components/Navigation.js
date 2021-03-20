@@ -24,7 +24,7 @@ const Navigation = () => {
                <h1 className={styles.navigation__logo__h}>babyDaily</h1>
             </NavLink>
             <div className={styles.navigation__item}><img src={baby} className={styles.navigation__item__img} />
-               <span>Wojtek</span>
+               { !currentUser ? null : <span>{currentUser.displayName}</span> }
             </div>
          </div>
 

@@ -3,7 +3,8 @@ html {
    --primary-color: #F5DEB3;
    --secondary-color:#BCA77E;
    --focus-color: rgba(255, 238, 202, .2);
-   --font-color: #005B4C;
+   --contrast-color: #005B4C;
+   --font-color: #0b3f36;
 }
 
 .container {
