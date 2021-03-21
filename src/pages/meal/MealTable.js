@@ -1,10 +1,18 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchMeals } from '../../state/meal';
+import { useAuth } from '../../context/AuthContext';
 
 import styles from '../../styles/meal.module.css';
 
 const MealTable = () => {
-  const dataList = useSelector(state => state.meal.data);
+  const {currentUser} = useAuth();
+  const dispatch = useDispatch();
+  const dataList = useSelector(state => state.meal.data)
+                    .filter((item, i) => item["mail"].includes(currentUser.email));
+
+  useEffect(() => dispatch(fetchMeals()), []);
+
   return (
     <section className={styles.table__section}>
       <div className={styles.table}>

@@ -1,6 +1,8 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
+export const DATABASE_URL = "https://babydaily-5eb19-default-rtdb.firebaseio.com";
+
 const firebaseConfig = {
   apiKey: "AIzaSyAuMrI5i2QiYNYy1jBoga_v2mHiPL-zKGA",
   authDomain: "babydaily-5eb19.firebaseapp.com",
