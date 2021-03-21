@@ -9,7 +9,12 @@ const MealTable = () => {
   const {currentUser} = useAuth();
   const dispatch = useDispatch();
   const dataList = useSelector(state => state.meal.data)
-                    .filter((item, i) => item["mail"].includes(currentUser.email));
+                    .filter((item) => item["mail"].includes(currentUser.email))
+                    .sort((a, b)=> {
+                      const current = parseInt(a.date.split('.').reverse().reduce((acc, cur) => acc + cur));
+                      const next = parseInt(b.date.split('.').reverse().reduce((acc, cur) => acc + cur));
+                      return current > next ? 1 : -1;
+                    });
 
   useEffect(() => dispatch(fetchMeals()), []);
 

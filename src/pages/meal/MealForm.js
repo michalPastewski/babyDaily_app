@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from '../../styles/meal.module.css';
+import {useAuth} from '../../context/AuthContext';
 
 import MealCheckboxes from './MealCheckboxes';
 import Button from '../../components/Button';
@@ -8,9 +9,11 @@ import FormItem from '../../components/FormItem';
 import { resetCheckbox, add } from '../../state/meal';
 
 const MealForm = ({ show, isClicked }) => {
+  const {currentUser} = useAuth();
   const label = useSelector(state => state.meal.label);
   const dispatch = useDispatch();
   const dataToFill = {
+    mail: '',
     date: '',
     start: '',
     end: '',
@@ -43,14 +46,13 @@ const MealForm = ({ show, isClicked }) => {
    setState({...state,
       [name]: value,
       });
-
-
-    // value.split('-').reverse().join('.');
   }
 
   const onSend = (e) => {
     e.preventDefault();
     setState({...state,
+      date: state.date.split('-').reverse().join('.'),
+      mail: currentUser.email,
       time: mealTime(),
       type: label
     });

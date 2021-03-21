@@ -1,16 +1,20 @@
 import {React, useState, useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
+
 import styles from '../styles/meal.module.css';
 import Button from '../components/Button';
 import { add, resetCheckbox } from '../state/meal';
+import { useAuth } from '../context/AuthContext';
 
 const Stopwatch = () => {
+  const {currentUser} = useAuth();
   const label = useSelector(state => state.meal.label);
   const dispatch = useDispatch();
 
   const dataToFill = {
     date: '',
+    mail: '',
     start: '',
     end: '',
     time: '',
@@ -38,6 +42,7 @@ const Stopwatch = () => {
     if(timer > 2) {  //in finall version 59
       setState({...state,
         date: endTime.toLocaleDateString(),
+        mail: currentUser.email,
         end: localeTimeFormat(endTime),
         time: `${hours}:${minutes} h`,
           type: label
