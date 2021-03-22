@@ -1,0 +1,153 @@
+.logging__section {
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  border: solid 2px var(--primary-color);
+  border-radius: 15px;
+  box-shadow: 0px 3px 8px 1px var(--contrast-color);
+}
+  .logging__section h4 {
+    padding: 5px 0;
+    font-size: 1.5em;
+    letter-spacing: 1px;
+    background: var(--primary-color);
+    border-radius: 10px;
+  }
+
+.logging__forms {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.logging__form {
+    width: 60%;
+    margin: 0 auto;
+    padding: 0;
+    border-color: var(--primary-color);
+    border-radius: 15px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+    .logging__form legend {
+      font-size: 1.5em;
+    }
+    .logging__form label {
+      margin: 10px 0 0 8%;
+      align-self: flex-start;
+    }
+    .logging__form input {
+      width: 85%;
+      min-height: 30px;
+      font-size: 1.2em;
+      outline: none;
+      border: transparent;
+      border-bottom: solid 1px var(--contrast-color);
+    }
+    .logging__form button {
+      width: 100px;
+      height: 35px;
+      margin: 15px 0 5px;
+      letter-spacing: 1px;
+      font-size: 1em;
+      color: var(--primary-color);
+      background-color: var(--contrast-color);
+      border: solid 1px var(--contrast-color);
+      border-radius: 10px;
+    }
+    .logging__form button:hover {
+      color: var(--font-color);
+      font-weight: bolder;
+      background-color: #fff;
+    }
+
+.logging__info {
+  width: 100%;
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+  .logging__info__item p {
+    display: inline-block;
+    margin: 0;
+  }
+
+.logging__link {
+  margin-left: 8px;
+  padding: 0 5px;
+  text-decoration: none;
+  color: inherit;
+  font-weight: bolder;
+  cursor: pointer;
+  border-left: solid 3px var(--contrast-color);
+  border-right: solid 3px var(--contrast-color);
+}
+.logging__link:hover {
+  border-color: var(--secondary-color);
+  color: var(--secondary-color);
+}
+
+.error {
+  border: solid 2px rgba(255,99,72,1);
+  background-color: rgba(255, 99, 72, 0.589) !important;
+}
+
+@media (max-width: 760px) {
+  .logging__forms {
+    margin-top: 10px;
+  }
+
+  .logging__form {
+    width: 85%;
+  }
+
+  .logging__section {
+    width: 95%;
+    padding: 10px;
+  }
+
+  .logging__section h4 {
+    margin: 0px auto 8px;
+    font-size: 0.8em;
+  }
+
+  .logging__form legend {
+    font-size: 1em;
+  }
+  .logging__form input {
+    min-height: 25px;
+    font-size: 0.8em;
+    outline: none;
+  }
+  .logging__form button {
+    width: 95px;
+    height: 35px;
+    margin: 10px 0;
+    letter-spacing: 1px;
+  }
+}
+@media (max-width: 830px) {
+  .logging__info {
+    flex-direction: column;
+  }
+  .logging__info__item {
+    width: 100%;
+    padding: 5px 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .logging__info {
+    margin-top: 5px;
+  }
+  .logging__info__item {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+}
