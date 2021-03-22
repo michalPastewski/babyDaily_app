@@ -8,8 +8,11 @@
   box-shadow: 0px 3px 8px 1px var(--contrast-color);
 }
   .logging__section h4 {
+    padding: 5px 0;
     font-size: 1.5em;
     letter-spacing: 1px;
+    background: var(--primary-color);
+    border-radius: 10px;
   }
 
 .logging__forms {
@@ -20,11 +23,13 @@
 .logging__form {
     width: 60%;
     margin: 0 auto;
+    padding: 0;
+    border-color: var(--primary-color);
+    border-radius: 15px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-color: var(--primary-color);
-    border-radius: 15px;
   }
     .logging__form legend {
       font-size: 1.5em;
@@ -37,7 +42,6 @@
       width: 85%;
       min-height: 30px;
       font-size: 1.2em;
-      background: none !important;
       outline: none;
       border: transparent;
       border-bottom: solid 1px var(--contrast-color);
@@ -60,10 +64,14 @@
     }
 
 .logging__info {
+  width: 100%;
   margin-top: 15px;
-  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-  .logging__info p {
+  .logging__info__item p {
+    display: inline-block;
     margin: 0;
   }
 
@@ -80,4 +88,66 @@
 .logging__link:hover {
   border-color: var(--secondary-color);
   color: var(--secondary-color);
+}
+
+.error {
+  border: solid 2px rgba(255,99,72,1);
+  background-color: rgba(255, 99, 72, 0.589) !important;
+}
+
+@media (max-width: 760px) {
+  .logging__forms {
+    margin-top: 10px;
+  }
+
+  .logging__form {
+    width: 85%;
+  }
+
+  .logging__section {
+    width: 95%;
+    padding: 10px;
+  }
+
+  .logging__section h4 {
+    margin: 0px auto 8px;
+    font-size: 0.8em;
+  }
+
+  .logging__form legend {
+    font-size: 1em;
+  }
+  .logging__form input {
+    min-height: 25px;
+    font-size: 0.8em;
+    outline: none;
+  }
+  .logging__form button {
+    width: 95px;
+    height: 35px;
+    margin: 10px 0;
+    letter-spacing: 1px;
+  }
+}
+@media (max-width: 830px) {
+  .logging__info {
+    flex-direction: column;
+  }
+  .logging__info__item {
+    width: 100%;
+    padding: 5px 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .logging__info {
+    margin-top: 5px;
+  }
+  .logging__info__item {
+    flex-direction: column;
+    align-items: flex-end;
+  }
 }

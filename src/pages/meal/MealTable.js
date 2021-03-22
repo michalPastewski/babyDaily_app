@@ -16,7 +16,7 @@ const MealTable = () => {
                       return current > next ? 1 : -1;
                     });
 
-  useEffect(() => dispatch(fetchMeals()), []);
+  useEffect(() => dispatch(fetchMeals()), [dispatch]);
 
   return (
     <section className={styles.table__section}>

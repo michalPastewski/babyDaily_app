@@ -9,7 +9,7 @@ const SignUp = () => {
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
   const babyNameRef = useRef();
-  const { signUp, updateProfile } = useAuth();
+  const { signUp, updateProfile, singOut } = useAuth();
   const history =  useHistory();
   const [error, setError] = useState('');
 
@@ -35,11 +35,11 @@ const SignUp = () => {
       <form onSubmit={handleSubmit} className={styles.logging__forms}>
         <fieldset className={styles.logging__form}>
           <legend>Rejestracja</legend>
-          { error && <div>{error}</div> }
+          { error && <div className={styles.error}>{error}</div> }
           <label htmlFor='babyName'>Imię dziecka:</label>
           <input type='text' id='babyName' name='babyName' ref={babyNameRef} />
 
-          <label htmlFor='login'>Login:</label>
+          <label htmlFor='login'>E-mail:</label>
           <input type='email' id='email' name='email' ref={emailRef} required />
 
           <label htmlFor='password'>Hasło:</label>

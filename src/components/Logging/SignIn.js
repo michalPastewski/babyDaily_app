@@ -25,7 +25,7 @@ const SignIn = () => {
       <form onSubmit={handleSubmit}>
         <fieldset className={styles.logging__form}>
           <legend>Logowanie</legend>
-            <label htmlFor='login'>Login:</label>
+            <label htmlFor='login'>E-mail:</label>
             <input type='email' id='email' name='email' ref={emailRef} autoFocus required />
 
             <label htmlFor='password'>Hasło:</label>
@@ -34,15 +34,17 @@ const SignIn = () => {
             <button>zaloguj</button>
         </fieldset>
 
-        { error &&  <div><h4>{error}</h4></div> }
+        { error &&  <div ><h4 className={styles.error}>{error}</h4></div> }
 
         <div className={styles.logging__info}>
-          <p>Potrzebujesz konto??
+          <div  className={styles.logging__info__item}>
+            <p>Potrzebujesz konto??</p>
             <Link to='/sign-up' className={styles.logging__link}>Przejdź do rejestracji</Link>
-          </p>
-          <p>Uciekło Ci z pamięci hasło??
-            <Link to='/forgot-password' className={styles.logging__link}>Tu je resetujemy 🙂</Link>
-          </p>
+          </div>
+          <div className={styles.logging__info__item}>
+          <p>Uciekło Ci z pamięci hasło??</p>
+          <Link to='/forgot-password' className={styles.logging__link}>Tu je resetujemy</Link>
+          </div>
         </div>
 
       </form>

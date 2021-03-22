@@ -37,7 +37,7 @@ const ForgotPassword = () => {
             <label htmlFor='email'>podaj email:</label>
             <input type='email' id='email' name='email' ref={emailRef} required/>
 
-            {error && <div><h4>{error}</h4></div>}
+            {error && <div ><h4 className={styles.error}>{error}</h4></div>}
 
             <button>Potwierdź</button>
           </fieldset>

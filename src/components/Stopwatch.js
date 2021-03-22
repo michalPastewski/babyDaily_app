@@ -62,7 +62,7 @@ const Stopwatch = () => {
       setIsSended(false);
     }
     !isActive && clearInterval(countRef.current);
-  },[isSended, isActive]);
+  },[isSended, isActive, dispatch, state]);
 
   const localeTimeFormat = (time) => time.toLocaleTimeString().slice(0,-3);
   const timeSetting = (elm) => (elm >= 10) ? elm : `0${elm}`;
