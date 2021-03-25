@@ -18,7 +18,7 @@ const Stopwatch = () => {
     start: '',
     end: '',
     time: '',
-    type: null
+    type: ['---']
   }
   const [state, setState] = useState(dataToFill);
   const [timer, setTimer] = useState(0);
@@ -39,13 +39,16 @@ const Stopwatch = () => {
 
   const stopTimer = () => {
     const endTime = new Date();
+    if(label.length === 0) {
+      label.push('---');
+    }
     if(timer > 2) {  //in finall version 59
       setState({...state,
         date: endTime.toLocaleDateString(),
         mail: currentUser.email,
         end: localeTimeFormat(endTime),
         time: `${hours}:${minutes} h`,
-          type: label
+        type: label
         });
         setIsSended(true);
       } else {
@@ -75,7 +78,7 @@ const Stopwatch = () => {
     <>
       <Button title="start" onClick={startTimer} />
       <div className={styles.timer}>
-        <div>{`${hours}:${minutes}:${seconds}`}</div>
+        {`${hours}:${minutes}:${seconds}`}
       </div>
       <Button title="stop" onClick={stopTimer} />
     </>

@@ -18,7 +18,7 @@ const MealForm = ({ show, isClicked }) => {
     start: '',
     end: '',
     time: '',
-    type: null
+    type: [],
   }
 
   const [state, setState] = useState(dataToFill);
@@ -50,6 +50,10 @@ const MealForm = ({ show, isClicked }) => {
 
   const onSend = (e) => {
     e.preventDefault();
+    if(label.length === 0) {
+      label.push('---');
+    }
+    
     setState({...state,
       date: state.date.split('-').reverse().join('.'),
       mail: currentUser.email,

@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchMeals } from '../../state/meal';
 import { useAuth } from '../../context/AuthContext';
 
 import styles from '../../styles/meal.module.css';
+import MealList from './MealList';
 
 const MealTable = () => {
   const {currentUser} = useAuth();
@@ -15,8 +17,33 @@ const MealTable = () => {
                       const next = parseInt(b.date.split('.').reverse().reduce((acc, cur) => acc + cur));
                       return current > next ? 1 : -1;
                     });
+  
+const [mealList, setMealList] = useState(dataList);
 
-  useEffect(() => dispatch(fetchMeals()), [dispatch]);
+let { mealTableId } = useParams();
+
+  const day = new Date().toLocaleDateString();
+  // const week = new Date().get;
+  const month = new Date().toLocaleDateString().split('.').slice(1).join('.');
+  let newMealList = [];
+
+  if(mealTableId === 'today') {
+    newMealList = dataList.filter(meal => meal.date === day)
+  }
+
+  // if(mealTableId === 'all-week') {
+  //   newMealList = dataList.filter(meal => meal.date === week)
+  // }
+
+  if(mealTableId === 'all-month') {
+    newMealList = dataList.filter(meal => meal.date.split('.').slice(1).join('.') === month)
+  }
+
+  useEffect(() => {
+    setMealList(newMealList)
+  }, [mealTableId]);
+
+  useEffect(() => dispatch(fetchMeals()), [dispatch, mealList]);
 
   return (
     <section className={styles.table__section}>
@@ -29,14 +56,13 @@ const MealTable = () => {
           <div className={styles.table__item}>RODZAJ</div>
         </header>
         {
-          dataList.reverse().map((data) => (
-                <div className={styles.table__row} key={data.id}>
-                  <div className={styles.table__item}>{data.date}</div>
-                  <div className={styles.table__item}>{data.start}</div>
-                  <div className={styles.table__item}>{data.end}</div>
-                  <div className={styles.table__item}>{data.time}</div>
-                  <div className={styles.table__item}>{data.type.join(', ')}</div>
-                </div>))
+          mealList.length === 0
+          ? dataList.map((meal) => (
+              <MealList  data={meal} key={meal.id}/> 
+            )).reverse()
+          : mealList.map((meal) => (
+            <MealList  data={meal} key={meal.id}/> 
+          )).reverse()
         }
       </div>
     </section>

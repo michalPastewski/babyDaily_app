@@ -29,13 +29,13 @@ const Navigation = () => {
          </div>
 
          <div className={styles.navigation__list}>
-            <NavLink to="meal" className={styles.navigation__list__link}>
+            <NavLink to="/meal" className={styles.navigation__list__link}>
                <img src={bottleImg} className={styles.navigation__list__img} />
             </NavLink>
-            <NavLink to="diaper" className={styles.navigation__list__link}>
+            <NavLink to="/diaper" className={styles.navigation__list__link}>
                <img src={diaper} className={styles.navigation__list__img} />
             </NavLink>
-            <NavLink to="sleep" className={styles.navigation__list__link}>
+            <NavLink to="/sleep" className={styles.navigation__list__link}>
                <img src={moon} className={styles.navigation__list__img} />
             </NavLink>
          </div>
