@@ -6,6 +6,9 @@ html {
    --contrast-color: #005B4C;
    --font-color: #0b3f36;
 }
+* {
+   box-sizing: border-box;
+}
 
 .container {
    width: min(1440px, 100%);
@@ -19,7 +22,7 @@ html {
 }
 
 .page__title {
-   display: block;
+   margin: 40px;
    text-align: center;
    font-size: 2em;
    letter-spacing: 3px;
@@ -27,6 +30,7 @@ html {
 
 .icon {
    grid-area: icon;
+   justify-self: center;
  }
 
 .icon__img {
@@ -41,7 +45,6 @@ html {
  .button {
    width: 80px;
    height: 80px;
-   margin-top: 20px;
    font-size: 1.2em;
    color: var(--font-color);
 
@@ -83,5 +86,15 @@ html {
    }
    .icon {
       display: none;
+   }
+}
+
+@media (max-width: 400px) {
+   .page__title {
+      margin: 10px auto;
+   }
+   .button {
+      width: 50px;
+      height: 50px;
    }
 }

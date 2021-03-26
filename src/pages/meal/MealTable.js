@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchMeals } from '../../state/meal';
+import { fetchMeals, remove } from '../../state/meal';
 import { useAuth } from '../../context/AuthContext';
 
 import styles from '../../styles/meal.module.css';
+import MealList from './MealList';
 
-const MealTable = () => {
+const MealTable = ({ showBin, onClickShow, filter }) => {
   const {currentUser} = useAuth();
   const dispatch = useDispatch();
   const dataList = useSelector(state => state.meal.data)
@@ -16,10 +17,61 @@ const MealTable = () => {
                       return current > next ? 1 : -1;
                     });
 
+  let mealTab = [];
+  const day = new Date().toLocaleDateString();
+  const month = new Date().toLocaleDateString().split('.').slice(1).join('.');
+
+  if(filter === 'all-month') {
+      mealTab =  dataList.filter(meal => meal.date.split('.').slice(1).join('.') === month)
+  }
+  if(filter === 'today') {
+        mealTab = dataList.filter(meal => meal.date === day)
+  }
+
+
+  const handleOnRemove = (id) => {
+    dispatch(remove(id));
+  }
+
   useEffect(() => dispatch(fetchMeals()), [dispatch]);
 
+  if(showBin) {
+    return (
+      <div className={styles.table__section}>
+      <div className={styles.table}>
+        <header className={styles.table__row}>
+          <div className={styles.table__item}>DATA</div>
+          <div className={styles.table__item}>START</div>
+          <div className={styles.table__item}>KONIEC</div>
+          <div className={styles.table__item}>CZAS</div>
+          <div className={styles.table__item}>USUŃ</div>
+        </header>
+          {
+            !filter
+            ? dataList.map((meal) => (
+              <MealList  key={meal.id}
+                showBin={showBin} 
+                onRemove={handleOnRemove} 
+                onClickShow={onClickShow} 
+                data={meal} 
+              />))
+              .reverse()
+            : mealTab.map((meal) => (
+              <MealList  key={meal.id}
+                showBin={showBin} 
+                onRemove={handleOnRemove} 
+                onClickShow={onClickShow} 
+                data={meal}
+              />))
+              .reverse()
+          }
+      </div>
+    </div>
+    );
+  }
+
   return (
-    <section className={styles.table__section}>
+    <div className={styles.table__section}>
       <div className={styles.table}>
         <header className={styles.table__row}>
           <div className={styles.table__item}>DATA</div>
@@ -28,18 +80,23 @@ const MealTable = () => {
           <div className={styles.table__item}>CZAS</div>
           <div className={styles.table__item}>RODZAJ</div>
         </header>
-        {
-          dataList.reverse().map((data) => (
-                <div className={styles.table__row} key={data.id}>
-                  <div className={styles.table__item}>{data.date}</div>
-                  <div className={styles.table__item}>{data.start}</div>
-                  <div className={styles.table__item}>{data.end}</div>
-                  <div className={styles.table__item}>{data.time}</div>
-                  <div className={styles.table__item}>{data.type.join(', ')}</div>
-                </div>))
-        }
+          {
+            !filter
+            ? dataList.map((meal) => (
+              <MealList  
+                data={meal} 
+                key={meal.id} 
+              />))
+              .reverse()
+            : mealTab.map((meal) => (
+              <MealList  
+                data={meal} 
+                key={meal.id} 
+              />))
+              .reverse()
+          }
       </div>
-    </section>
+    </div>
   )
 }
 

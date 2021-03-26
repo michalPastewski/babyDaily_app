@@ -11,6 +11,7 @@ import Diaper from './pages/Diaper';
 import Sleep from './pages/Sleep';
 import SignUp from "./components/Logging/SignUp";
 import ForgotPassword from './components/Logging/ForgotPassword';
+import MealTable from './pages/meal/MealTable';
 
 function App() {
   return (
