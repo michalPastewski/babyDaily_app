@@ -1,8 +1,6 @@
-import React,  { useState }from 'react';
-import { Link, useRouteMatch, useParams } from 'react-router-dom';
+import React,  { useState } from 'react';
 import mealImg from '../../assets/icons/feeding-bottle.svg';
 import styles from '../../styles/meal.module.css';
-import { useAuth } from "../../context/AuthContext";
 
 import PageWrapper from "../../components/PageWrapper";
 import PageIcon from "../../components/PageIcon";
@@ -11,18 +9,16 @@ import MealForm from './MealForm';
 import Stopwatch from '../../components/Stopwatch';
 import MealDisplay from './MealDisplay';
 
-import MealTable from './MealTable';
 
 const Meal = () => {
    const [show, setShow] = useState(false);
    const [displayMeal, setDisplayMeal] = useState(false);
-   const {currentUser} = useAuth();
 
    const showForm = () => {
       setShow(!show);
    }
 
-   const handleOnDisplaMeal = () => {
+   const handleOnDisplayMeal = () => {
       setDisplayMeal(!displayMeal);
    }
 
@@ -37,8 +33,10 @@ const Meal = () => {
                   <Stopwatch />
                </section>
                <div className={styles.table__content}>
-                  <button onClick={handleOnDisplaMeal}>
-                     <Link to="/meal">wyświetl posiłki</Link>
+                  <button className={styles.table__buton}
+                     onClick={handleOnDisplayMeal}
+                  >
+                     wyświetl posiłki
                   </button>
                {
                   displayMeal && <MealDisplay onFormShow={showForm}/>

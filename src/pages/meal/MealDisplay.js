@@ -1,47 +1,51 @@
-import React from 'react';
-import { Link, useRouteMatch, Switch, Route } from 'react-router-dom';
+import React, { useState } from 'react';
 
 import MealTable from './MealTable';
 import styles from '../../styles/meal.module.css';
 
 
 const MealDisplay = ( { onFormShow }) => {
-  let {path, url} = useRouteMatch();
+  const [showBin, setShowBin]  = useState(false);
+  const [mealFilter, setMealFilter] = useState('');
 
-  const handleOnClick = () => onFormShow();
+  const handleOnAdd = () => onFormShow();
+
+  const handleOnDelete = () => setShowBin(!showBin);
+
+  const handleOnFiltered = (e) => {
+    setMealFilter(e.target.name);
+  }
+
   return (
-    <div className={styles.table__content}>
-      <section className={styles.table__nav}>
-        <div>
-            <ul className={styles.table__nav__list}>
-              <li role="tab">
-                  <button className={styles.nav__button}>
-                        <Link to={`${url}/today`} >dzisiaj</Link>
-                  </button>
-              </li>
-              <li role="tab">
-                  <button className={styles.nav__button}>
-                    <Link to={`${url}/all-week`}>tydzień</Link>
-                  </button>
-              </li>
-              <li role="tab">
-                  <button className={styles.nav__button}>
-                    <Link to={`${url}/all-month`}>miesiąc</Link>
-                  </button>
-              </li>
-            </ul>
+    <section className={styles.table__content}>
+      <div className={styles.table__nav}>
+        <div className={styles.table__nav__list}>
+          <button
+            className={mealFilter === '' ? styles.nav__button__active : styles.nav__button} 
+            name='' onClick={handleOnFiltered}
+            >
+                wszystko
+          </button>
+          <button
+            className={mealFilter === 'today' ? styles.nav__button__active : styles.nav__button} 
+            name='today'
+                  onClick={handleOnFiltered} >
+              dzisiaj
+          </button>
+          <button
+            className={mealFilter === 'all-month' ? styles.nav__button__active : styles.nav__button} 
+            name='all-month'
+                  onClick={handleOnFiltered}>
+              miesiąc
+          </button>
         </div>
-        <button className={styles.nav__button}  onClick={handleOnClick}>dodaj</button>
-      </section>
-      <Switch>
-        <Route exact path={path}>
-          <MealTable />
-        </Route>
-        <Route path={`${path}/:mealTableId`}>
-          <MealTable />
-        </Route>
-      </Switch>
-  </div>
+        <div className={styles.table__nav__list}>
+          <button className={styles.nav__button} onClick={handleOnAdd}>dodaj</button>
+          <button className={styles.nav__button}  onClick={handleOnDelete}>usuń</button>
+        </div>
+      </div>
+      <MealTable showBin={showBin} onClickShow={handleOnDelete} filter={mealFilter} />
+  </section>
   );
 }
 

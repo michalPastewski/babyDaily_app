@@ -75,6 +75,16 @@ export const add = (data) => {
   }
 }
 
+export const remove = (mealId) => {
+  return (dispatch) => {
+    fetch(`${DATABASE_URL}/meals/${mealId}.json`, {
+      method: "DELETE",
+    })
+    .then(() => dispatch(fetchMeals()))
+    .catch((error) => dispatch(setError(error)));
+  }
+}
+
 export const addLabel = (label) => ({type: ADD_LABEL, payload: label});
 export const removeLabel = (label) => ({type: REMOVE_LABEL, payload: label});
 export const resetCheckbox = () => ({type: RESET_CHECKBOX});

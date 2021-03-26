@@ -89,6 +89,18 @@
   padding-top: 10px;
   border-top: solid 1px #ccc;
 }
+.table__buton {
+  display: block;
+  margin: 0 auto 10px;
+  padding: 0 10px;
+  height: 42px;
+  outline: none;
+  background-color: var(--font-color);
+  color: #fff;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 10px;
+}
 .table__nav {
   display: flex;
   justify-content: space-between;
@@ -103,7 +115,7 @@
   width: 95px;
   height: 42px;
   margin: 0 1px;
-  font-size: 1.5em;
+  font-size: 1em;
   color: var(--font-color);
   background-color: #fff;
   outline: none;
@@ -111,8 +123,28 @@
   border: solid 1px var(--secondary-color);
   border-radius: 10px 10px 0 0;
 }
+.nav__button__active {
+  width: 95px;
+  height: 42px;
+  margin: 0 1px;
+  font-size: 1em;
+  outline: none;
+
+  border: solid 1px var(--secondary-color);
+  border-radius: 10px 10px 0 0;
+  border-bottom: solid 3px var(--secondary-color);
+  background-color: var(--secondary-color);
+  color: #fff;
+}
 .nav__button:hover {
-  transform: scaleY(1.2) translateY(-3px);
+  border: solid 3px var(--secondary-color);
+  transform: translateY(-3px);
+}
+.nav__button:active {
+  background-color: var(--primary-color);
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: inset 0px 0px 2px 1px var(--font-color);
 }
 
 .list__section {
@@ -123,7 +155,8 @@
 
 .table__section {
   width: 100%;
-  border-top: 1px solid #ccc;
+  border: 2px solid var(--secondary-color);
+  z-index: 2;
 }
 
 .table {
@@ -220,5 +253,15 @@
   .checkbox__menu {
     grid-template-columns: 1fr;
     row-gap: 10px;
+  }
+}
+@media (max-width: 568px) {
+  .nav__button {
+    width: 52px;
+    font-size: .6em;
+  }
+  .nav__button__active {
+    width: 52px;
+    font-size: .6em;
   }
 }
