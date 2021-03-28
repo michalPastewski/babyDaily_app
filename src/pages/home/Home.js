@@ -9,10 +9,10 @@ const Home = () => {
    const { currentUser } = useAuth();
 
    return (
-   <PageWrapper title='babyDaily'>
-     
-      { !currentUser ? <SignIn/> :  <MainHome /> }
-   </PageWrapper>
-)}
+      <PageWrapper title="babyDaily">
+         {!currentUser ? <SignIn /> : <MainHome />}
+      </PageWrapper>
+   );
+};
 
 export default Home;

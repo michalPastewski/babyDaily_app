@@ -4,27 +4,31 @@ import styles from '../styles/meal.module.css';
 
 import { addLabel, removeLabel } from '../state/meal';
 
-const Checkbox = ({label}) => {
-  const isChecked = useSelector(state => state.meal.isChecked);
-  const dispatch = useDispatch();
+const Checkbox = ({ label }) => {
+   const isChecked = useSelector((state) => state.meal.isChecked);
+   const dispatch = useDispatch();
 
-  const [checked, setChecked] = useState(false);
+   const [checked, setChecked] = useState(false);
 
-  const handleOnCheck = () => {
-    !checked ? dispatch(addLabel(label)) : dispatch(removeLabel(label));
-    setChecked(!checked);
-  };
+   const handleOnCheck = () => {
+      !checked ? dispatch(addLabel(label)) : dispatch(removeLabel(label));
+      setChecked(!checked);
+   };
 
-  useEffect(() => {
-    if(isChecked === null && checked) setChecked(false);
-  }, [isChecked])
+   useEffect(() => {
+      if (isChecked === null && checked) setChecked(false);
+   }, [isChecked]);
 
-  return (
-    <div className={styles.checkbox__menu__section} onClick={handleOnCheck}>
-      <span className={checked ? styles.checkbox__checked : styles.checkbox__check}></span>
-      {label}
-    </div>
-  );
-}
+   return (
+      <div className={styles.checkbox__menu__section} onClick={handleOnCheck}>
+         <span
+            className={
+               checked ? styles.checkbox__checked : styles.checkbox__check
+            }
+         ></span>
+         {label}
+      </div>
+   );
+};
 
 export default Checkbox;
