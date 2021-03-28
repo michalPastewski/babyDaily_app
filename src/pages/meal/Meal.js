@@ -33,7 +33,7 @@ const Meal = () => {
          </section>
          <div className={styles.table__content}>
             <button
-               className={styles.table__buton}
+               className={styles.table__button}
                onClick={handleOnDisplayMeal}
             >
                wyświetl posiłki

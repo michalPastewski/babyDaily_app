@@ -118,8 +118,8 @@ const MealForm = ({ show, isClicked }) => {
             <MealCheckboxes />
          </div>
          <div className={styles.form__button}>
-            <Button title="zamknij" onClick={onClose} />
-            <Button title="dodaj" />
+            <Button title="✖️" onClick={onClose} />
+            <Button title="✔️" />
          </div>
       </form>
    );
