@@ -5,11 +5,15 @@ import { useAuth } from '../../context/AuthContext';
 
 import styles from '../../styles/meal.module.css';
 import MealList from './MealList';
+import Loader from '../../components/Loader';
 
 const MealTable = ({ showBin, onClickShow, filter }) => {
    const { currentUser } = useAuth();
    const dispatch = useDispatch();
-   const dataList = useSelector((state) => state.meal.data)
+   const data = useSelector((state) => state.meal);
+
+   const isLoading = data.isLoading;
+   const mealList = data.data
       .filter((item) => item['mail'].includes(currentUser.email))
       .sort((a, b) => {
          const current = parseInt(
@@ -27,17 +31,17 @@ const MealTable = ({ showBin, onClickShow, filter }) => {
          return current > next ? 1 : -1;
       });
 
-   let mealTab = [];
+   let mealFilter = [];
    const day = new Date().toLocaleDateString();
    const month = new Date().toLocaleDateString().split('.').slice(1).join('.');
 
    if (filter === 'all-month') {
-      mealTab = dataList.filter(
+      mealFilter = mealList.filter(
          (meal) => meal.date.split('.').slice(1).join('.') === month,
       );
    }
    if (filter === 'today') {
-      mealTab = dataList.filter((meal) => meal.date === day);
+      mealFilter = mealList.filter((meal) => meal.date === day);
    }
 
    const handleOnRemove = (id) => {
@@ -46,7 +50,7 @@ const MealTable = ({ showBin, onClickShow, filter }) => {
 
    useEffect(() => dispatch(fetchMeals()), [dispatch]);
 
-   if (showBin) {
+   if (isLoading) {
       return (
          <div className={styles.table__section}>
             <div className={styles.table}>
@@ -55,32 +59,14 @@ const MealTable = ({ showBin, onClickShow, filter }) => {
                   <div className={styles.table__item}>START</div>
                   <div className={styles.table__item}>KONIEC</div>
                   <div className={styles.table__item}>CZAS</div>
-                  <div className={styles.table__item}>USUŃ</div>
+                  {showBin ? (
+                     <div className={styles.table__item}>USUŃ</div>
+                  ) : (
+                     <div className={styles.table__item}>RODZAJ</div>
+                  )}
                </header>
-               {!filter
-                  ? dataList
-                       .map((meal) => (
-                          <MealList
-                             key={meal.id}
-                             showBin={showBin}
-                             onRemove={handleOnRemove}
-                             onClickShow={onClickShow}
-                             data={meal}
-                          />
-                       ))
-                       .reverse()
-                  : mealTab
-                       .map((meal) => (
-                          <MealList
-                             key={meal.id}
-                             showBin={showBin}
-                             onRemove={handleOnRemove}
-                             onClickShow={onClickShow}
-                             data={meal}
-                          />
-                       ))
-                       .reverse()}
             </div>
+            <Loader />
          </div>
       );
    }
@@ -93,14 +79,34 @@ const MealTable = ({ showBin, onClickShow, filter }) => {
                <div className={styles.table__item}>START</div>
                <div className={styles.table__item}>KONIEC</div>
                <div className={styles.table__item}>CZAS</div>
-               <div className={styles.table__item}>RODZAJ</div>
+               {showBin ? (
+                  <div className={styles.table__item}>USUŃ</div>
+               ) : (
+                  <div className={styles.table__item}>RODZAJ</div>
+               )}
             </header>
             {!filter
-               ? dataList
-                    .map((meal) => <MealList data={meal} key={meal.id} />)
+               ? mealList
+                    .map((meal) => (
+                       <MealList
+                          key={meal.id}
+                          showBin={showBin}
+                          onRemove={handleOnRemove}
+                          onClickShow={onClickShow}
+                          data={meal}
+                       />
+                    ))
                     .reverse()
-               : mealTab
-                    .map((meal) => <MealList data={meal} key={meal.id} />)
+               : mealFilter
+                    .map((meal) => (
+                       <MealList
+                          key={meal.id}
+                          showBin={showBin}
+                          onRemove={handleOnRemove}
+                          onClickShow={onClickShow}
+                          data={meal}
+                       />
+                    ))
                     .reverse()}
          </div>
       </div>

@@ -5,12 +5,14 @@ const SET_ERROR = 'SET_ERROR';
 const ADD_LABEL = 'ADD_LABEL';
 const REMOVE_LABEL = 'REMOVE_LABEL';
 const RESET_CHECKBOX = 'RESET_CHECKBOX';
+const SET_LOADING = 'SET_LOADING';
 
 const initialState = {
    data: [],
    label: [],
    isChecked: null,
    error: null,
+   isLoading: false,
 };
 
 //REDUCER
@@ -21,13 +23,20 @@ export default function (state = initialState, action) {
             label: [],
             isChecked: null,
             error: null,
+            isLoading: false,
             data: action.payload,
+         };
+      case SET_LOADING:
+         return {
+            ...state,
+            isLoading: true,
          };
       case ADD_LABEL:
          return {
             ...state,
             label: [...state.label, action.payload],
             isChecked: false,
+            isLoading: false,
          };
       case REMOVE_LABEL:
          return {
@@ -39,6 +48,12 @@ export default function (state = initialState, action) {
       case RESET_CHECKBOX:
          removeLabel();
          return { ...state, label: [], isChecked: null };
+      case SET_ERROR:
+         return {
+            ...state,
+            isLoading: false,
+            error: action.payload,
+         };
       default:
          return state;
    }
@@ -47,9 +62,12 @@ export default function (state = initialState, action) {
 //ACTON CREATORS
 export const setMeals = (meals) => ({ type: SET_MEALS, payload: meals });
 export const setError = (error) => ({ type: SET_ERROR, payload: error });
+export const setLoading = () => ({ type: SET_LOADING });
 
 export const fetchMeals = () => {
    return (dispatch) => {
+      dispatch(setLoading());
+
       fetch(`${DATABASE_URL}/meals.json`)
          .then((response) => response.json())
          .then((data) => {
@@ -67,6 +85,8 @@ export const fetchMeals = () => {
 
 export const add = (data) => {
    return (dispatch) => {
+      dispatch(setLoading());
+
       fetch(`${DATABASE_URL}/meals.json`, {
          method: 'POST',
          body: JSON.stringify(data),
@@ -78,6 +98,8 @@ export const add = (data) => {
 
 export const remove = (mealId) => {
    return (dispatch) => {
+      dispatch(setLoading());
+
       fetch(`${DATABASE_URL}/meals/${mealId}.json`, {
          method: 'DELETE',
       })

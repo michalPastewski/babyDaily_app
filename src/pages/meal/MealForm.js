@@ -82,46 +82,44 @@ const MealForm = ({ show, isClicked }) => {
    });
 
    let display = null;
-   show ? (display = 'grid') : (display = 'none');
+   show ? (display = 'block') : (display = 'none');
 
    return (
-      <form
-         className={styles.form}
-         style={{ display: `${display}` }}
-         onSubmit={onSend}
-      >
-         <FormItem
-            name="date"
-            type="date"
-            title="Data"
-            value={state.date}
-            style={styles.input__date}
-            onChanged={onChange}
-         />
-         <FormItem
-            name="start"
-            type="time"
-            title="Początek"
-            value={state.start}
-            style={styles.input__start}
-            onChanged={onChange}
-         />
-         <FormItem
-            name="end"
-            type="time"
-            title="Koniec"
-            value={state.end}
-            style={styles.input__end}
-            onChanged={onChange}
-         />
-         <div className={styles.form__checkboxes}>
-            <MealCheckboxes />
-         </div>
-         <div className={styles.form__button}>
-            <Button title="✖️" onClick={onClose} />
-            <Button title="✔️" />
-         </div>
-      </form>
+      <div className={styles.form} style={{ display: `${display}` }}>
+         <form className={styles.form__content} onSubmit={onSend}>
+            <FormItem
+               name="date"
+               type="date"
+               title="Data"
+               value={state.date}
+               style={styles.input__date}
+               onChanged={onChange}
+            />
+            <FormItem
+               name="start"
+               type="time"
+               title="Początek"
+               value={state.start}
+               style={styles.input__start}
+               onChanged={onChange}
+            />
+            <FormItem
+               name="end"
+               type="time"
+               title="Koniec"
+               value={state.end}
+               style={styles.input__end}
+               onChanged={onChange}
+            />
+            <div className={styles.form__checkboxes}>
+               <MealCheckboxes />
+            </div>
+            <div className={styles.form__button}>
+               <Button title="✖️" onClick={onClose} />
+               <Button title="✔️" />
+            </div>
+         </form>
+      </div>
    );
 };
 

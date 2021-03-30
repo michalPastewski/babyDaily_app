@@ -75,6 +75,58 @@ html {
    text-align: center;
 }
 
+.loader {
+   width: 100%;
+   min-height: 100px;
+}
+.loader__content {
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-wrap: wrap;
+}
+.loader__title {
+   width: 100%;
+   margin-bottom: 20px;
+   text-align: center;
+   font-size: 2em;
+}
+.loader__item {
+   width: 20px;
+   height: 20px;
+   margin: 0 5px;
+   background-color: var(--font-color);
+   border-radius: 50%;
+}
+.item__one {
+   animation: loader 0.8s linear infinite;
+}
+.item__two {
+   animation: loader 0.8s 0.4s linear infinite;
+}
+.item__three {
+   animation: loader 0.8s 0.8s linear infinite;
+}
+
+@keyframes loader {
+   0% {
+      transform: translateY(0);
+   }
+   25% {
+      transform: translateY(-10px);
+   }
+   50% {
+      transform: translateY(-5px);
+   }
+   75% {
+      transform: translateY(-10px);
+   }
+   100% {
+      transform: translateY(0);
+   }
+}
+
 @media (max-width: 760px) {
    .button {
       width: 60px;
