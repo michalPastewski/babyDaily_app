@@ -21,33 +21,21 @@ const MealDisplay = ({ onFormShow }) => {
             <div className={styles.table__nav__list}>
                <div>
                   <button
-                     className={
-                        mealFilter === ''
-                           ? styles.nav__button__active
-                           : styles.nav__button
-                     }
+                     className={mealFilter === '' ? styles.nav__button__active : styles.nav__button}
                      name=""
                      onClick={handleOnFiltered}
                   >
                      wszystko
                   </button>
                   <button
-                     className={
-                        mealFilter === 'today'
-                           ? styles.nav__button__active
-                           : styles.nav__button
-                     }
+                     className={mealFilter === 'today' ? styles.nav__button__active : styles.nav__button}
                      name="today"
                      onClick={handleOnFiltered}
                   >
                      dzisiaj
                   </button>
                   <button
-                     className={
-                        mealFilter === 'all-month'
-                           ? styles.nav__button__active
-                           : styles.nav__button
-                     }
+                     className={mealFilter === 'all-month' ? styles.nav__button__active : styles.nav__button}
                      name="all-month"
                      onClick={handleOnFiltered}
                   >
@@ -56,17 +44,11 @@ const MealDisplay = ({ onFormShow }) => {
                </div>
                <div className={styles.table__nav__list__nested}>
                   {showBin ? (
-                     <button
-                        className={styles.nav__button}
-                        onClick={handleOnDelete}
-                     >
+                     <button className={styles.nav__button} onClick={handleOnDelete}>
                         rodzaj
                      </button>
                   ) : (
-                     <button
-                        className={styles.nav__button}
-                        onClick={handleOnDelete}
-                     >
+                     <button className={styles.nav__button} onClick={handleOnDelete}>
                         usuń
                      </button>
                   )}
@@ -76,11 +58,7 @@ const MealDisplay = ({ onFormShow }) => {
                </div>
             </div>
          </div>
-         <MealTable
-            showBin={showBin}
-            onClickShow={handleOnDelete}
-            filter={mealFilter}
-         />
+         <MealTable showBin={showBin} onClickShow={handleOnDelete} filter={mealFilter} />
       </section>
    );
 };

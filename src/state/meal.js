@@ -41,9 +41,7 @@ export default function (state = initialState, action) {
       case REMOVE_LABEL:
          return {
             ...state,
-            label: state.label.filter(
-               (label) => !label.includes(action.payload),
-            ),
+            label: state.label.filter((label) => !label.includes(action.payload)),
          };
       case RESET_CHECKBOX:
          removeLabel();

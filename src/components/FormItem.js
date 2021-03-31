@@ -3,10 +3,7 @@ import '../styles/app.css';
 
 const FormItem = ({ name, type, title, style, onChanged, value }) => {
    return (
-      <div
-         className={style}
-         style={{ display: 'flex', flexDirection: 'column' }}
-      >
+      <div className={style} style={{ display: 'flex', flexDirection: 'column' }}>
          <label htmlFor={name} className="form__item__label">
             {title}
          </label>

@@ -9,7 +9,7 @@ const SignUp = () => {
    const passwordRef = useRef();
    const passwordConfirmRef = useRef();
    const babyNameRef = useRef();
-   const { signUp, updateProfile, singOut } = useAuth();
+   const { signUp, updateNameProfile, singOut } = useAuth();
    const history = useHistory();
    const [error, setError] = useState('');
 
@@ -23,7 +23,7 @@ const SignUp = () => {
       try {
          setError('');
          await signUp(emailRef.current.value, passwordRef.current.value);
-         await updateProfile(babyNameRef.current.value);
+         await updateNameProfile(babyNameRef.current.value);
          history.push('/');
       } catch {
          setError('Rejestracja się nie powiodła');
@@ -36,41 +36,16 @@ const SignUp = () => {
             <legend>Rejestracja</legend>
             {error && <div className={styles.error}>{error}</div>}
             <label htmlFor="babyName">Imię dziecka:</label>
-            <input
-               type="text"
-               id="babyName"
-               name="babyName"
-               ref={babyNameRef}
-            />
+            <input type="text" id="babyName" name="babyName" ref={babyNameRef} />
 
             <label htmlFor="login">E-mail:</label>
-            <input
-               type="email"
-               id="email"
-               name="email"
-               ref={emailRef}
-               required
-            />
+            <input type="email" id="email" name="email" ref={emailRef} required />
 
             <label htmlFor="password">Hasło:</label>
-            <input
-               type="password"
-               id="password"
-               name="password"
-               minLength="6"
-               ref={passwordRef}
-               required
-            />
+            <input type="password" id="password" name="password" minLength="6" ref={passwordRef} required />
 
             <label htmlFor="confirm">Potwierdź hasło:</label>
-            <input
-               type="password"
-               id="confirm"
-               name="confirm"
-               minLength="6"
-               ref={passwordConfirmRef}
-               required
-            />
+            <input type="password" id="confirm" name="confirm" minLength="6" ref={passwordConfirmRef} required />
 
             <button>rejestruj</button>
          </fieldset>

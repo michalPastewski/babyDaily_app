@@ -13,9 +13,7 @@ const SignIn = () => {
 
    const handleSubmit = (e) => {
       e.preventDefault();
-      signIn(emailRef.current.value, passwordRef.current.value).catch((error) =>
-         setError(`Wprowadziłeś błędne dane`),
-      );
+      signIn(emailRef.current.value, passwordRef.current.value).catch((error) => setError(`Wprowadziłeś błędne dane`));
    };
 
    return (
@@ -26,24 +24,10 @@ const SignIn = () => {
             <fieldset className={styles.logging__form}>
                <legend>Logowanie</legend>
                <label htmlFor="login">E-mail:</label>
-               <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  ref={emailRef}
-                  autoFocus
-                  required
-               />
+               <input type="email" id="email" name="email" ref={emailRef} autoFocus required />
 
                <label htmlFor="password">Hasło:</label>
-               <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  minLength="6"
-                  ref={passwordRef}
-                  required
-               />
+               <input type="password" id="password" name="password" minLength="6" ref={passwordRef} required />
 
                <button>zaloguj</button>
             </fieldset>

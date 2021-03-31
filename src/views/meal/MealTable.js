@@ -36,9 +36,7 @@ const MealTable = ({ showBin, onClickShow, filter }) => {
    const month = new Date().toLocaleDateString().split('.').slice(1).join('.');
 
    if (filter === 'all-month') {
-      mealFilter = mealList.filter(
-         (meal) => meal.date.split('.').slice(1).join('.') === month,
-      );
+      mealFilter = mealList.filter((meal) => meal.date.split('.').slice(1).join('.') === month);
    }
    if (filter === 'today') {
       mealFilter = mealList.filter((meal) => meal.date === day);

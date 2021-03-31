@@ -8,11 +8,7 @@ import SignIn from '../../components/Logging/SignIn';
 const Home = () => {
    const { currentUser } = useAuth();
 
-   return (
-      <PageWrapper title="babyDaily">
-         {!currentUser ? <SignIn /> : <MainHome />}
-      </PageWrapper>
-   );
+   return <PageWrapper title="babyDaily">{!currentUser ? <SignIn /> : <MainHome />}</PageWrapper>;
 };
 
 export default Home;

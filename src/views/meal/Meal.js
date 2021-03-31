@@ -32,10 +32,7 @@ const Meal = () => {
             <Stopwatch />
          </section>
          <div className={styles.table__content}>
-            <button
-               className={styles.table__button}
-               onClick={handleOnDisplayMeal}
-            >
+            <button className={styles.table__button} onClick={handleOnDisplayMeal}>
                wyświetl posiłki
             </button>
             {displayMeal && <MealDisplay onFormShow={showForm} />}

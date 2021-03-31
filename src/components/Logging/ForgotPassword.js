@@ -34,13 +34,7 @@ const ForgotPassword = () => {
                   <legend>Reset hasła</legend>
 
                   <label htmlFor="email">podaj email:</label>
-                  <input
-                     type="email"
-                     id="email"
-                     name="email"
-                     ref={emailRef}
-                     required
-                  />
+                  <input type="email" id="email" name="email" ref={emailRef} required />
 
                   {error && (
                      <div>

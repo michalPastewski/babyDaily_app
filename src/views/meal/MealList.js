@@ -14,10 +14,7 @@ const MealList = ({ data, showBin, onRemove, onClickShow }) => {
          <div className={styles.table__item}>{data.end}</div>
          <div className={styles.table__item}>{data.time}</div>
          {showBin ? (
-            <div
-               className={styles.table__item}
-               onClick={() => handleOnClick(data.id)}
-            >
+            <div className={styles.table__item} onClick={() => handleOnClick(data.id)}>
                <button className={styles.table__item__button}>❌</button>
             </div>
          ) : (

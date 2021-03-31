@@ -25,9 +25,7 @@ const MealForm = ({ show, isClicked }) => {
    const [isSended, setIsSended] = useState(false);
 
    const mealTime = () => {
-      const startTime = state['start']
-         .split(':')
-         .reduce((acc, curr) => acc + curr);
+      const startTime = state['start'].split(':').reduce((acc, curr) => acc + curr);
       const endTime = state['end'].split(':').reduce((acc, curr) => acc + curr);
 
       const time = endTime - startTime;

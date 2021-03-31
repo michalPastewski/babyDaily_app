@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import className from 'classnames';
 import styles from '../styles/navigation.module.css';
@@ -11,10 +11,17 @@ import baby from '../assets/icons/smiling-baby.svg';
 
 const Navigation = () => {
    const { signOut, currentUser } = useAuth();
+   const [babyName, setBabyName] = useState('');
 
    const handleLogOut = () => {
       signOut();
    };
+
+   useEffect(() => {
+      if (currentUser) {
+         setBabyName(currentUser.displayName);
+      }
+   }, [currentUser]);
 
    return (
       <nav className={styles.navigation}>
@@ -24,7 +31,7 @@ const Navigation = () => {
             </NavLink>
             <div className={styles.navigation__item}>
                <img src={baby} className={styles.navigation__item__img} />
-               {currentUser ? <span>{currentUser.displayName}</span> : ''}
+               <span>{babyName}</span>
             </div>
          </div>
 
@@ -40,6 +47,16 @@ const Navigation = () => {
             </NavLink>
          </div>
          <div className={styles.button__section}>
+            <Link to="/user-profile" className={styles.link}>
+               <button
+                  className={className({
+                     [styles.navigation__item]: true,
+                     [styles.navigation__button]: true,
+                  })}
+               >
+                  Profil
+               </button>
+            </Link>
             {currentUser ? (
                <button
                   className={className({
@@ -51,16 +68,16 @@ const Navigation = () => {
                   Wyloguj
                </button>
             ) : (
-               <button
-                  className={className({
-                     [styles.navigation__item]: true,
-                     [styles.navigation__button]: true,
-                  })}
-               >
-                  <Link to="/" className={styles.link}>
+               <Link to="/" className={styles.link}>
+                  <button
+                     className={className({
+                        [styles.navigation__item]: true,
+                        [styles.navigation__button]: true,
+                     })}
+                  >
                      Zaloguj
-                  </Link>
-               </button>
+                  </button>
+               </Link>
             )}
          </div>
       </nav>

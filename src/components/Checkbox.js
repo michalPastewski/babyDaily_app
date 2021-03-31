@@ -21,11 +21,7 @@ const Checkbox = ({ label }) => {
 
    return (
       <div className={styles.checkbox__menu__section} onClick={handleOnCheck}>
-         <span
-            className={
-               checked ? styles.checkbox__checked : styles.checkbox__check
-            }
-         ></span>
+         <span className={checked ? styles.checkbox__checked : styles.checkbox__check}></span>
          {label}
       </div>
    );
