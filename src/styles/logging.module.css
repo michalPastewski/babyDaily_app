@@ -90,11 +90,6 @@
    color: var(--secondary-color);
 }
 
-.error {
-   border: solid 2px rgba(255, 99, 72, 1);
-   background-color: rgba(255, 99, 72, 0.589) !important;
-}
-
 @media (max-width: 760px) {
    .logging__forms {
       margin-top: 10px;

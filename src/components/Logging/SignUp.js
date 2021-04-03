@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 
 import styles from '../../styles/logging.module.css';
+import '../../styles/app.css';
 
 const SignUp = () => {
    const emailRef = useRef();
@@ -34,7 +35,7 @@ const SignUp = () => {
       <form onSubmit={handleSubmit} className={styles.logging__forms}>
          <fieldset className={styles.logging__form}>
             <legend>Rejestracja</legend>
-            {error && <div className={styles.error}>{error}</div>}
+            {error && <div className="error">{error}</div>}
             <label htmlFor="babyName">Imię dziecka:</label>
             <input type="text" id="babyName" name="babyName" ref={babyNameRef} />
 

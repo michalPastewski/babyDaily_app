@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import firebase from 'firebase';
 import { auth } from '../firebase';
 
 const AuthContext = React.createContext();
@@ -19,9 +20,17 @@ export const AuthProvider = ({ children }) => {
 
    const updateNameProfile = (name) => auth.currentUser.updateProfile({ displayName: name });
 
-   const updateEmail = (userEmail) => {
-      return currentUser.updateEmail(userEmail);
+   const updateEmail = (userNewEmail) => currentUser.updateEmail(userNewEmail);
+
+   const updatePassword = (newPassword) => currentUser.updatePassword(newPassword);
+
+   const reAuthenticate = (password) => {
+      const credential = firebase.auth.EmailAuthProvider.credential(currentUser.email, password);
+      return firebase.auth().currentUser.reauthenticateWithCredential(credential);
    };
+
+   const deleteProfile = () => currentUser.delete();
+
    useEffect(() => {
       const unsubscribe = auth.onAuthStateChanged((user) => {
          setCurrentUser(user);
@@ -41,6 +50,9 @@ export const AuthProvider = ({ children }) => {
       resetPassword,
       updateNameProfile,
       updateEmail,
+      reAuthenticate,
+      updatePassword,
+      deleteProfile,
    };
 
    return <AuthContext.Provider value={value}>{!loading && children}</AuthContext.Provider>;

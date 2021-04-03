@@ -1,8 +1,9 @@
 import React, { useRef, useState } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 
 import styles from '../../styles/logging.module.css';
+import '../../styles/app.css';
 
 const ForgotPassword = () => {
    const emailRef = useRef();
@@ -32,15 +33,10 @@ const ForgotPassword = () => {
             <form onSubmit={handleSubmit} className={styles.logging__forms}>
                <fieldset className={styles.logging__form}>
                   <legend>Reset hasła</legend>
+                  {error && <div className="error">{error}</div>}
 
                   <label htmlFor="email">podaj email:</label>
                   <input type="email" id="email" name="email" ref={emailRef} required />
-
-                  {error && (
-                     <div>
-                        <h4 className={styles.error}>{error}</h4>
-                     </div>
-                  )}
 
                   <button>Potwierdź</button>
                </fieldset>

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 
 import styles from '../../styles/logging.module.css';
+import '../../styles/app.css';
 
 const SignIn = () => {
    const emailRef = useRef();
@@ -13,7 +14,9 @@ const SignIn = () => {
 
    const handleSubmit = (e) => {
       e.preventDefault();
-      signIn(emailRef.current.value, passwordRef.current.value).catch((error) => setError(`Wprowadziłeś błędne dane`));
+      signIn(emailRef.current.value, passwordRef.current.value).catch((error) => {
+         setError(error.message);
+      });
    };
 
    return (
@@ -22,6 +25,8 @@ const SignIn = () => {
 
          <form onSubmit={handleSubmit}>
             <fieldset className={styles.logging__form}>
+               {error && <div className="error">{error}</div>}
+
                <legend>Logowanie</legend>
                <label htmlFor="login">E-mail:</label>
                <input type="email" id="email" name="email" ref={emailRef} autoFocus required />
@@ -31,12 +36,6 @@ const SignIn = () => {
 
                <button>zaloguj</button>
             </fieldset>
-
-            {error && (
-               <div>
-                  <h4 className={styles.error}>{error}</h4>
-               </div>
-            )}
 
             <div className={styles.logging__info}>
                <div className={styles.logging__info__item}>

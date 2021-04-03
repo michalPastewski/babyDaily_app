@@ -35,6 +35,8 @@ const UserInfo = () => {
          {showNameModal && (
             <UserModal
                type="text"
+               name="babyName"
+               password={false}
                title="nowe imię"
                label="Imię"
                placeholder="wpisz aktualne imię"
@@ -52,22 +54,15 @@ const UserInfo = () => {
             </button>
          </div>
          {showEmailModal && (
-            <UpdateUserForm
+            <UserModal
                type="email"
-               title="Twój nowy email"
-               name="nowy email"
-               label="hasło"
-               showForm={handleOnEmailModal}
-               onSubmit={handleOnSubmit}
+               name="email"
+               password={true}
+               title="nowy email"
+               label="email"
+               placeholder="podaj nowy email"
+               showModal={handleOnEmailModal}
             />
-            // <UserModal
-            //    type="email"
-            //    name='email'
-            //    title="nowy email"
-            //    label="Email"
-            //    placeholder="podaj nowy email"
-            //    showModal={handleOnEmailModal}
-            // />
          )}
       </div>
    );
