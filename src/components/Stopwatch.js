@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import styles from '../styles/meal.module.css';
 import Button from '../components/Button';
-import { add, resetCheckbox } from '../state/meal';
+import { add, resetCheckbox, removeLabel } from '../state/meal';
 import { useAuth } from '../context/AuthContext';
 
 const Stopwatch = () => {
@@ -27,6 +27,7 @@ const Stopwatch = () => {
 
    const startTimer = () => {
       if (!isActive) {
+         dispatch(removeLabel({ label }));
          const startTime = new Date();
          setState({ ...state, start: localeTimeFormat(startTime) });
          setIsActive(true);

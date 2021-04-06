@@ -80,7 +80,7 @@ const UpdateUserForm = ({ type, title, name, label, showForm }) => {
             </div>
 
             <div className={styles.form__buttons}>
-               <button className={styles.button} onClick={showForm}>
+               <button type="button" className={styles.button} onClick={showForm}>
                   anuluj
                </button>
                <button className={styles.button}>wyślij</button>

@@ -1,8 +1,9 @@
 import React from 'react';
+import styles from '../../styles/home.module.css';
 
 const MainHome = () => (
-   <div>
-      <h3>Witaj</h3>
+   <div className={styles.main__content}>
+      <h3 className={styles.content__header}>Witaj</h3>
       <div>
          <p>
             Pierwsze kilkanaście tygodni po przyjściu dziecka na świat, wskazane jest dokładne monitorowanie jego

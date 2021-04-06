@@ -50,7 +50,7 @@ const UserProfile = () => {
                />
             ) : (
                <fieldset className={styles.form__content}>
-                  <legend className={styles.form__title}>zmiana hasla</legend>
+                  <legend className={styles.form__title}>usuń profil</legend>
                   <h5>Uwaga!!</h5>
                   <p>
                      Usunięcie profilu jest równoznaczne z całkowitym i nieodwracalnym usunięciem wszystkich danych

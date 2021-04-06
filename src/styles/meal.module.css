@@ -57,13 +57,27 @@
    border-radius: 8px;
 }
 
-/* .input__num {
-  width: 80px;
-  margin-left: 10px;
-  font-size: .8em;
-  text-align: end;
-  outline: none;
-} */
+.input__num {
+   width: 80px;
+   margin-left: 10px;
+   font-size: 0.8em;
+   text-align: end;
+   outline: none;
+}
+.input__num__button {
+   width: 30px;
+   margin-left: 10px;
+   background-color: var(--font-color);
+   color: #fff;
+   font-size: 1.5rem;
+   border: none;
+   border-radius: 10px;
+   outline: none;
+}
+.input__num__button:active {
+   background-color: var(--secondary-color);
+   border: solid 1px var(--font-color);
+}
 
 .label {
    width: 100%;

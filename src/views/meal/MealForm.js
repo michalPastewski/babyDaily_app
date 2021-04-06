@@ -27,19 +27,32 @@ const MealForm = ({ show, isClicked }) => {
    const mealTime = () => {
       const startTime = state['start'].split(':').reduce((acc, curr) => acc + curr);
       const endTime = state['end'].split(':').reduce((acc, curr) => acc + curr);
+      const totalTime = endTime - startTime;
 
-      const time = endTime - startTime;
-      const formatTime = time.toString().split('');
+      const formatTime = (time) => {
+         const formattingTime = [];
+         const hours = Math.floor(time / 60);
+         const minutes = time % 60;
 
-      if (formatTime.length <= 1) {
-         return `00:0${formatTime[0]} h`;
-      } else if (formatTime.length <= 2) {
-         return `00:${formatTime[0]}${formatTime[1]} h`;
-      } else if (formatTime.length <= 3) {
-         return `0${formatTime[0]}:${formatTime[1]}${formatTime[2]} h`;
-      } else {
-         return `${formatTime[0]}${formatTime[1]}:${formatTime[2]}${formatTime[3]} h`;
+         formattingTime.push(hours);
+         formattingTime.push(minutes);
+         return formattingTime;
+      };
+
+      const timeResult = formatTime(totalTime);
+      if (timeResult[0] < 10 && timeResult[1] < 10) {
+         return `0${timeResult[0]}:0${timeResult[1]} h`;
       }
+      if (timeResult[0] < 10 && timeResult[1] >= 10) {
+         return `0${timeResult[0]}:${timeResult[1]} h`;
+      }
+      if (timeResult[0] >= 10 && timeResult[1] < 10) {
+         return `${timeResult[0]}:0${timeResult[1]} h`;
+      }
+      if (timeResult >= 10 && timeResult >= 10) {
+         return `${timeResult[0]}:${timeResult[1]} h`;
+      }
+      return timeResult;
    };
 
    const onChange = (name, value) => {
@@ -77,7 +90,7 @@ const MealForm = ({ show, isClicked }) => {
          setState(dataToFill);
          setIsSended(false);
       }
-   });
+   }, [isSended, dataToFill, state, dispatch]);
 
    let display = null;
    show ? (display = 'block') : (display = 'none');

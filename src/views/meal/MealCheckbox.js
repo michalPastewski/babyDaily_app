@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import styles from '../styles/meal.module.css';
+import styles from '../../styles/meal.module.css';
 
-import { addLabel, removeLabel } from '../state/meal';
+import { addLabel, removeLabel } from '../../state/meal';
 
-const Checkbox = ({ label }) => {
+const MealCheckbox = ({ label }) => {
    const isChecked = useSelector((state) => state.meal.isChecked);
    const dispatch = useDispatch();
 
@@ -17,7 +17,7 @@ const Checkbox = ({ label }) => {
 
    useEffect(() => {
       if (isChecked === null && checked) setChecked(false);
-   }, [isChecked]);
+   }, [isChecked, checked]);
 
    return (
       <div className={styles.checkbox__menu__section} onClick={handleOnCheck}>
@@ -27,4 +27,4 @@ const Checkbox = ({ label }) => {
    );
 };
 
-export default Checkbox;
+export default MealCheckbox;

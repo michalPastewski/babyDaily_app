@@ -3,10 +3,9 @@ import React, { useState } from 'react';
 import styles from '../../styles/userProfile.module.css';
 import { useAuth } from '../../context/AuthContext';
 import UserModal from './UserModal';
-import UpdateUserForm from './UpdateUserForm';
 
 const UserInfo = () => {
-   const { currentUser, updateEmail } = useAuth();
+   const { currentUser } = useAuth();
    const [showNameModal, setShowNameModal] = useState(false);
    const [showEmailModal, setShowEmailModal] = useState(false);
 
@@ -17,10 +16,6 @@ const UserInfo = () => {
    const handleOnEmailModal = () => {
       setShowEmailModal(!showEmailModal);
    };
-
-   function handleOnSubmit(newEmail, password) {
-      updateEmail(newEmail);
-   }
 
    return (
       <div className={styles.header}>

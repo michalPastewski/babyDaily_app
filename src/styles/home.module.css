@@ -1,0 +1,9 @@
+.main__content {
+   border-left: solid 10px var(--secondary-color);
+   padding: 3px 10px;
+   font-size: 1.2rem;
+}
+.content__header {
+   margin: 8px 3px 3px;
+   font-size: 2rem;
+}

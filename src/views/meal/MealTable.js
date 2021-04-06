@@ -8,13 +8,13 @@ import Loader from '../../components/Loader';
 
 const MealTable = ({ showBin, onClickShow, filter }) => {
    const dispatch = useDispatch();
-   const data = useSelector((state) => state.meal);
+   const data = useSelector((state) => state.meal.data);
+   const isLoading = useSelector((state) => state.meal.isLoading);
    const [mealList, setMealList] = useState([]);
-
-   const isLoading = data.isLoading;
+   let mealFilter = [];
 
    const createMealList = (data) => {
-      const mealList = data.data
+      const mealList = data
          .sort((a, b) => {
             const current = parseInt(
                a.date
@@ -39,7 +39,6 @@ const MealTable = ({ showBin, onClickShow, filter }) => {
       return mealList;
    };
 
-   let mealFilter = [];
    const formatDate = (date) => {
       const formatDate = date.toLocaleDateString();
       let createNewDate = [];
@@ -50,6 +49,7 @@ const MealTable = ({ showBin, onClickShow, filter }) => {
       }
       return formatDate;
    };
+
    const day = new Date();
    const month = new Date().toLocaleDateString().split('.').slice(1).join('.');
 

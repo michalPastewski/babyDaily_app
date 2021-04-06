@@ -10,7 +10,7 @@ const SignUp = () => {
    const passwordRef = useRef();
    const passwordConfirmRef = useRef();
    const babyNameRef = useRef();
-   const { signUp, updateNameProfile, singOut } = useAuth();
+   const { signUp, updateNameProfile } = useAuth();
    const history = useHistory();
    const [error, setError] = useState('');
 

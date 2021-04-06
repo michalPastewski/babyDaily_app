@@ -30,20 +30,20 @@ const Navigation = () => {
                <h1 className={styles.navigation__logo__h}>babyDaily</h1>
             </NavLink>
             <div className={styles.navigation__item}>
-               <img src={baby} className={styles.navigation__item__img} />
+               <img src={baby} className={styles.navigation__item__img} alt="smiling-baby icon" />
                <span>{babyName}</span>
             </div>
          </div>
 
          <div className={styles.navigation__list}>
             <NavLink to="/meal" className={styles.navigation__list__link}>
-               <img src={bottleImg} className={styles.navigation__list__img} />
+               <img src={bottleImg} className={styles.navigation__list__img} alt="feeding-bottle icon" />
             </NavLink>
             <NavLink to="/diaper" className={styles.navigation__list__link}>
-               <img src={diaper} className={styles.navigation__list__img} />
+               <img src={diaper} className={styles.navigation__list__img} alt="diaper icon" />
             </NavLink>
             <NavLink to="/sleep" className={styles.navigation__list__link}>
-               <img src={moon} className={styles.navigation__list__img} />
+               <img src={moon} className={styles.navigation__list__img} alt="moon icon" />
             </NavLink>
          </div>
          <div className={styles.button__section}>
