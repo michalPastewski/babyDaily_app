@@ -1,21 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchMeals, remove } from '../../state/meal';
-import { useAuth } from '../../context/AuthContext';
 
 import styles from '../../styles/meal.module.css';
 import MealList from './MealList';
 import Loader from '../../components/Loader';
 
 const MealTable = ({ showBin, onClickShow, filter }) => {
-   const { currentUser } = useAuth();
    const dispatch = useDispatch();
    const data = useSelector((state) => state.meal);
+   const [mealList, setMealList] = useState([]);
 
    const isLoading = data.isLoading;
-   const mealList = data.data
-      .filter((item) => item['mail'].includes(currentUser.email))
-      .sort((a, b) => {
+
+   const createMealList = (data) => {
+      const mealList = data.data.sort((a, b) => {
          const current = parseInt(
             a.date
                .split('.')
@@ -31,15 +30,31 @@ const MealTable = ({ showBin, onClickShow, filter }) => {
          return current > next ? 1 : -1;
       });
 
+      return mealList;
+   };
+
    let mealFilter = [];
-   const day = new Date().toLocaleDateString();
+   const formatDate = (date) => {
+      const formatDate = date.toLocaleDateString();
+      let createNewDate = [];
+      if (formatDate.charAt() !== '0') {
+         createNewDate = formatDate.split('');
+         createNewDate.unshift('0');
+         return createNewDate.join('');
+      }
+      return formatDate;
+   };
+   const day = new Date();
    const month = new Date().toLocaleDateString().split('.').slice(1).join('.');
 
    if (filter === 'all-month') {
       mealFilter = mealList.filter((meal) => meal.date.split('.').slice(1).join('.') === month);
    }
    if (filter === 'today') {
-      mealFilter = mealList.filter((meal) => meal.date === day);
+      mealFilter = mealList.filter((meal) => {
+         const createDate = formatDate(day);
+         return meal.date === createDate;
+      });
    }
 
    const handleOnRemove = (id) => {
@@ -47,6 +62,7 @@ const MealTable = ({ showBin, onClickShow, filter }) => {
    };
 
    useEffect(() => dispatch(fetchMeals()), [dispatch]);
+   useEffect(() => setMealList(createMealList(data)), [data]);
 
    if (isLoading) {
       return (

@@ -38,14 +38,26 @@ const Stopwatch = () => {
 
    const stopTimer = () => {
       const endTime = new Date();
+
+      const formatDate = (date) => {
+         const formatDate = date.toLocaleDateString();
+         let createNewDate = [];
+         if (formatDate.charAt() !== '0') {
+            createNewDate = formatDate.split('');
+            createNewDate.unshift('0');
+            return createNewDate.join('');
+         }
+         return formatDate;
+      };
+
       if (label.length === 0) {
          label.push('---');
       }
       if (timer > 2) {
-         //in finall version 59
+         //in final version 59
          setState({
             ...state,
-            date: endTime.toLocaleDateString(),
+            date: formatDate(endTime),
             mail: currentUser.email,
             end: localeTimeFormat(endTime),
             time: `${hours}:${minutes} h`,

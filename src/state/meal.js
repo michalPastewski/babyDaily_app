@@ -1,4 +1,5 @@
-import { DATABASE_URL } from '../firebase';
+import { DATABASE_URL, auth } from '../firebase';
+
 //ACTIONS
 const SET_MEALS = 'SET_MEALS';
 const SET_ERROR = 'SET_ERROR';
@@ -63,10 +64,12 @@ export const setError = (error) => ({ type: SET_ERROR, payload: error });
 export const setLoading = () => ({ type: SET_LOADING });
 
 export const fetchMeals = () => {
+   const USER_EMAIL = auth.currentUser.email;
+
    return (dispatch) => {
       dispatch(setLoading());
 
-      fetch(`${DATABASE_URL}/meals.json`)
+      fetch(`${DATABASE_URL}/meals.json?orderBy="mail"&equalTo="${USER_EMAIL}"`)
          .then((response) => response.json())
          .then((data) => {
             const formattedData = data
