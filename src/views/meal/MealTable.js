@@ -14,21 +14,27 @@ const MealTable = ({ showBin, onClickShow, filter }) => {
    const isLoading = data.isLoading;
 
    const createMealList = (data) => {
-      const mealList = data.data.sort((a, b) => {
-         const current = parseInt(
-            a.date
-               .split('.')
-               .reverse()
-               .reduce((acc, cur) => acc + cur),
-         );
-         const next = parseInt(
-            b.date
-               .split('.')
-               .reverse()
-               .reduce((acc, cur) => acc + cur),
-         );
-         return current > next ? 1 : -1;
-      });
+      const mealList = data.data
+         .sort((a, b) => {
+            const current = parseInt(
+               a.date
+                  .split('.')
+                  .reverse()
+                  .reduce((acc, cur) => acc + cur),
+            );
+            const next = parseInt(
+               b.date
+                  .split('.')
+                  .reverse()
+                  .reduce((acc, cur) => acc + cur),
+            );
+            return current > next ? 1 : -1;
+         })
+         .sort((a, b) => {
+            const current = parseInt(a.start.split(':').join(''));
+            const next = parseInt(b.start.split(':').join(''));
+            return current > next ? 1 : -1;
+         });
 
       return mealList;
    };
